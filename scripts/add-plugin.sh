@@ -171,9 +171,9 @@ for plugin_arg in "${PLUGIN_ARGS[@]}"; do
     # Read full metadata
     plugin_version=$(jq -r '.version // "0.1.0"' "$plugin_path/.claude-plugin/plugin.json" 2>/dev/null)
     plugin_description=$(jq -r '.description // ""' "$plugin_path/.claude-plugin/plugin.json" 2>/dev/null)
-    plugin_author=$(jq -r '.author.name // "Unknown"' "$plugin_path/.claude-plugin/plugin.json" 2>/dev/null)
+    plugin_keywords=$(jq -r '.keywords // [] | @json' "$plugin_path/.claude-plugin/plugin.json" 2>/dev/null)
 
-    PLUGIN_METADATA["$plugin_name"]="$plugin_version|$plugin_description|$plugin_author"
+    PLUGIN_METADATA["$plugin_name"]="$plugin_version|$plugin_description|$plugin_keywords"
 
     # Validate plugin with claude CLI (unless --skip-validation)
     if [[ "$SKIP_VALIDATION" != "true" ]]; then
@@ -347,7 +347,7 @@ for plugin_name in "${!PLUGIN_PATHS[@]}"; do
     source_path="${PLUGIN_SOURCES[$plugin_name]}"
     metadata="${PLUGIN_METADATA[$plugin_name]}"
 
-    IFS='|' read -r version description author <<< "$metadata"
+    IFS='|' read -r version description keywords <<< "$metadata"
 
     [[ "$JSON_MODE" != "true" ]] && print_info "Adding $final_name to marketplace"
 
@@ -363,7 +363,7 @@ for plugin_name in "${!PLUGIN_PATHS[@]}"; do
     fi
 
     # Add plugin entry
-    if ! add_plugin_to_marketplace "$MARKETPLACE_JSON" "$source_path" "$final_name" "$description" "$version" "$author"; then
+    if ! add_plugin_to_marketplace "$MARKETPLACE_JSON" "$source_path" "$final_name" "$description" "$version" "$keywords"; then
         print_error "Failed to add plugin to marketplace: $final_name"
         UPDATE_FAILED=true
         break
@@ -386,6 +386,7 @@ if [[ "$UPDATE_FAILED" == "true" ]]; then
 
     if restore_backup "$backup_path"; then
         print_error "Marketplace update failed - changes rolled back"
+        remove_backup "$backup_path"
     else
         print_error "Marketplace update failed AND rollback failed - backup at: $backup_path"
     fi
@@ -404,6 +405,7 @@ fi
 if ! validate_marketplace "$MARKETPLACE_JSON" true; then
     print_error "Final marketplace validation failed"
     restore_backup "$backup_path"
+    remove_backup "$backup_path"
     exit 1
 fi
 

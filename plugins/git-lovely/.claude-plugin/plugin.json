@@ -1,0 +1,26 @@
+{
+  "name": "git-lovely",
+  "version": "0.1.0",
+  "description": "Everything you need for lovely Git workflows",
+  "author": {
+    "name": "Aaron Bassett",
+    "email": "aaronbassett@gmail.com"
+  },
+  "homepage": "https://aaronbassett.com",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "cli",
+    "gh",
+    "pull-requests",
+    "issues",
+    "actions",
+    "workflow",
+    "automation",
+    "git",
+    "commits",
+    "conventional-commits",
+    "commit-messages"
+  ]
+}

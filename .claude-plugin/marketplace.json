@@ -21,10 +21,29 @@
   ],
   "plugins": [
     {
-      "name": "dev",
-      "source": "./plugins/dev",
+      "name": "dev-specialisms",
+      "source": "./plugins/dev-specialisms",
       "version": "0.1.0",
-      "description": "Specialist coding agents and skills",
+      "description": "Niche developer skills for deployment, CI/CD, AI/LLM integration, and DevX tooling",
+      "keywords": [
+        "deployment",
+        "CI",
+        "AI",
+        "LLM",
+        "UI",
+        "UX",
+        "devx",
+        "hashbrown",
+        "tooling",
+        "fly-deploy",
+        "init-local-tooling"
+      ]
+    },
+    {
+      "name": "devs",
+      "source": "./plugins/devs",
+      "version": "0.1.0",
+      "description": "Core language and framework skills for Python, Rust, TypeScript, React, and security",
       "keywords": [
         "code",
         "dev",
@@ -35,8 +54,7 @@
         "react",
         "reviews",
         "security",
-        "hashbrown",
-        "tooling"
+        "components"
       ]
     },
     {
@@ -58,22 +76,10 @@
       ]
     },
     {
-      "name": "frontend-vibes",
-      "source": "./plugins/frontend-vibes",
+      "name": "git-lovely",
+      "source": "./plugins/git-lovely",
       "version": "0.1.0",
-      "description": "Frontend UI design skill for creating developer tools with a Claude vibe",
-      "keywords": [
-        "style",
-        "frontend",
-        "ui",
-        "design"
-      ]
-    },
-    {
-      "name": "gh-cli",
-      "source": "./plugins/gh-cli",
-      "version": "0.1.0",
-      "description": "Comprehensive GitHub CLI (gh) integration skill enabling Claude to autonomously create and execute GitHub workflows for PRs, issues, Actions, and API operations",
+      "description": "Everything you need for lovely Git workflows including GitHub CLI integration and conventional commits",
       "keywords": [
         "github",
         "cli",
@@ -82,20 +88,24 @@
         "issues",
         "actions",
         "workflow",
-        "automation"
-      ]
-    },
-    {
-      "name": "useful-commits",
-      "source": "./plugins/useful-commits",
-      "version": "0.1.0",
-      "description": "Craft concise, conventional commit messages following Conventional Commits with Angular convention",
-      "keywords": [
+        "automation",
         "git",
         "commits",
         "conventional-commits",
-        "commit-messages",
-        "angular-convention"
+        "commit-messages"
+      ]
+    },
+    {
+      "name": "settings-presets",
+      "source": "./plugins/settings-presets",
+      "version": "0.1.0",
+      "description": "Configuration toolkit for streamlining Claude Code project setup with powerline status line and attribution settings",
+      "keywords": [
+        "configuration",
+        "settings",
+        "powerline",
+        "attribution",
+        "setup"
       ]
     }
   ]

@@ -113,15 +113,15 @@ print_section "Reviewing plugin: $PLUGIN_NAME"
 print_info "Plugin path: $PLUGIN_PATH_ABS"
 
 # Create review prompt
-REVIEW_PROMPT="You are conducting a comprehensive review of the Claude Code plugin located at: $PLUGIN_PATH_ABS
+REVIEW_PROMPT="Conduct a comprehensive review of the Claude Code plugin located at: $PLUGIN_PATH_ABS
 
-Please perform a thorough analysis using the plugin-dev:plugin-validator agent and generate a detailed report with the following sections:
+Use the plugin-dev:plugin-validator agent to perform a thorough analysis. Output ONLY the review report in markdown format with no preamble or explanatory text. Include these sections:
 
 ## Executive Summary
 Brief overview of the plugin, its purpose, and overall assessment.
 
 ## Validation Results
-Results from running 'claude plugin validate' on the plugin.
+Results from validation checks.
 
 ## Component Analysis
 Detailed analysis of:
@@ -146,12 +146,12 @@ Assessment of:
 - Usage examples
 
 ## Recommendations
-Specific, actionable recommendations for improvements, organized by priority:
+Specific, actionable recommendations organized by priority:
 - Critical issues
 - Suggested improvements
 - Optional enhancements
 
-Please save this report as markdown to: $OUTPUT_DIR_ABS/review-report.md"
+Output the review now:"
 
 # Run Claude CLI for the review
 print_section "Running Claude CLI review"
@@ -161,24 +161,30 @@ print_info "This may take a few minutes..."
 TEMP_PROMPT=$(mktemp)
 echo "$REVIEW_PROMPT" > "$TEMP_PROMPT"
 
-# Run claude CLI in the plugin directory context
-if (cd "$PLUGIN_PATH_ABS" && claude -p "$(cat "$TEMP_PROMPT")"); then
+# Capture Claude CLI output
+TEMP_OUTPUT=$(mktemp)
+if (cd "$PLUGIN_PATH_ABS" && claude -p "$(cat "$TEMP_PROMPT")" > "$TEMP_OUTPUT" 2>&1); then
+    # Save the output to the report file
+    cp "$TEMP_OUTPUT" "$OUTPUT_DIR_ABS/review-report.md"
     print_success "Review completed successfully"
+    print_success "Report saved to: $OUTPUT_DIR_ABS/review-report.md"
+else
+    print_error "Review failed"
+    print_info "Output was:"
+    cat "$TEMP_OUTPUT"
+    rm -f "$TEMP_PROMPT" "$TEMP_OUTPUT"
+    exit 1
+fi
 
-    # Check if report was created
-    if [[ -f "$OUTPUT_DIR_ABS/review-report.md" ]]; then
-        print_success "Report saved to: $OUTPUT_DIR_ABS/review-report.md"
-    else
-        print_warning "Review completed but report file not found at expected location"
-        print_info "Check the Claude CLI output for the review content"
-    fi
+# Cleanup temp output
+rm -f "$TEMP_OUTPUT"
 
-    # Generate JSON output if requested
-    if [[ "$INCLUDE_JSON" == "true" ]]; then
-        print_info "Generating JSON metadata..."
+# Generate JSON output if requested
+if [[ "$INCLUDE_JSON" == "true" ]]; then
+    print_info "Generating JSON metadata..."
 
-        JSON_OUTPUT="$OUTPUT_DIR_ABS/review-metadata.json"
-        cat > "$JSON_OUTPUT" << EOF
+    JSON_OUTPUT="$OUTPUT_DIR_ABS/review-metadata.json"
+    cat > "$JSON_OUTPUT" << EOF
 {
   "plugin_name": "$PLUGIN_NAME",
   "plugin_path": "$PLUGIN_PATH_ABS",
@@ -187,13 +193,7 @@ if (cd "$PLUGIN_PATH_ABS" && claude -p "$(cat "$TEMP_PROMPT")"); then
   "report_file": "$OUTPUT_DIR_ABS/review-report.md"
 }
 EOF
-        print_success "Metadata saved to: $JSON_OUTPUT"
-    fi
-
-else
-    print_error "Review failed"
-    rm -f "$TEMP_PROMPT"
-    exit 1
+    print_success "Metadata saved to: $JSON_OUTPUT"
 fi
 
 # Cleanup
