@@ -1,0 +1,102 @@
+{
+  "name": "aaronbassett-marketplace",
+  "version": "1.0.0",
+  "description": "Personal marketplace for Claude Code plugins, agents, and skills",
+  "owner": {
+    "name": "Aaron Bassett",
+    "email": "aaronbassett@gmail.com"
+  },
+  "homepage": "https://github.com/aaronbassett/claude-marketplace",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace.git",
+  "license": "MIT",
+  "keywords": [
+    "claude",
+    "marketplace",
+    "plugins",
+    "agents",
+    "skills",
+    "development",
+    "coding",
+    "automation"
+  ],
+  "plugins": [
+    {
+      "name": "dev",
+      "source": "./plugins/dev",
+      "version": "0.1.0",
+      "description": "Specialist coding agents and skills",
+      "keywords": [
+        "code",
+        "dev",
+        "development",
+        "python",
+        "rust",
+        "typescript",
+        "react",
+        "reviews",
+        "security",
+        "hashbrown",
+        "tooling"
+      ]
+    },
+    {
+      "name": "flutter-core",
+      "source": "./plugins/flutter-core",
+      "version": "0.1.0",
+      "description": "Comprehensive Flutter and Dart development toolkit providing expert guidance on UI/UX, architecture, state management, testing, performance, deployment, and backend integration with ServerPod",
+      "keywords": [
+        "flutter",
+        "dart",
+        "mobile",
+        "ui",
+        "material-design",
+        "state-management",
+        "serverpod",
+        "testing",
+        "performance",
+        "deployment"
+      ]
+    },
+    {
+      "name": "frontend-vibes",
+      "source": "./plugins/frontend-vibes",
+      "version": "0.1.0",
+      "description": "Frontend UI design skill for creating developer tools with a Claude vibe",
+      "keywords": [
+        "style",
+        "frontend",
+        "ui",
+        "design"
+      ]
+    },
+    {
+      "name": "gh-cli",
+      "source": "./plugins/gh-cli",
+      "version": "0.1.0",
+      "description": "Comprehensive GitHub CLI (gh) integration skill enabling Claude to autonomously create and execute GitHub workflows for PRs, issues, Actions, and API operations",
+      "keywords": [
+        "github",
+        "cli",
+        "gh",
+        "pull-requests",
+        "issues",
+        "actions",
+        "workflow",
+        "automation"
+      ]
+    },
+    {
+      "name": "useful-commits",
+      "source": "./plugins/useful-commits",
+      "version": "0.1.0",
+      "description": "Craft concise, conventional commit messages following Conventional Commits with Angular convention",
+      "keywords": [
+        "git",
+        "commits",
+        "conventional-commits",
+        "commit-messages",
+        "angular-convention"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# Claude Code local settings
+.claude/*.local.md
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Node modules (if any scripts use node)
+node_modules/
+
+# Python cache (if any scripts use python)
+__pycache__/
+*.pyc

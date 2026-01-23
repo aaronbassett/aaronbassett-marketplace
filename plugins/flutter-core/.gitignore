@@ -1,0 +1,19 @@
+# Plugin-specific
+.claude/*.local.md
+
+# MCP server
+mcp/flutter-docs-server/node_modules/
+mcp/flutter-docs-server/.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+*.log

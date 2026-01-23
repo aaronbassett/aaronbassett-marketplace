@@ -1,0 +1,33 @@
+{
+  "hooks": [
+    {
+      "name": "pre-commit-flutter",
+      "events": ["PreToolUse"],
+      "description": "Run Flutter analysis and formatting before git commits",
+      "condition": {
+        "tool": "Bash",
+        "commandPattern": "git commit"
+      },
+      "prompt": "Before allowing this git commit to proceed:\n\n1. Check if this is a Flutter project by looking for pubspec.yaml\n2. If it's a Flutter project:\n   - Run `flutter analyze` to check for code issues\n   - Run `dart format --set-exit-if-changed lib/ test/` to verify formatting\n   - Check `.claude/flutter-core.local.md` for pre_commit configuration\n   - If configuration has `run_analyze: false` or `enabled: false`, skip analysis\n   - If configuration has `strict: true`, treat warnings as errors\n3. If analysis finds errors (or warnings in strict mode):\n   - Block the commit\n   - Show the issues found\n   - Suggest running `/flutter-analyze --fix` to auto-fix issues\n   - Provide the option to override with `git commit --no-verify`\n4. If formatting issues found:\n   - Block the commit\n   - Show which files need formatting\n   - Suggest running `dart format lib/ test/`\n5. If all checks pass, allow the commit to proceed\n\nThis hook helps maintain code quality by catching issues before they're committed.",
+      "enabled": true
+    },
+    {
+      "name": "post-flutter-doctor",
+      "events": ["PostToolUse"],
+      "description": "Auto-detect and offer to fix Flutter doctor issues",
+      "condition": {
+        "tool": "Bash",
+        "commandPattern": "flutter doctor"
+      },
+      "prompt": "After the `flutter doctor` command completes:\n\n1. Parse the output for issues marked with [✗] or [!]\n2. Categorize issues by type:\n   - Android toolchain issues\n   - iOS toolchain issues (macOS only)\n   - Xcode issues (macOS only)\n   - VS Code / Android Studio issues\n   - Connected devices\n   - HTTP Host availability\n3. For each fixable issue, offer automated solutions:\n\n   **Android license issues:**\n   - Offer to run: `flutter doctor --android-licenses`\n\n   **cmdline-tools not installed:**\n   - Guide to install via Android Studio SDK Manager\n   - Or offer to download cmdline-tools\n\n   **CocoaPods not installed (macOS):**\n   - Offer to run: `sudo gem install cocoapods`\n\n   **Xcode not configured (macOS):**\n   - Offer to run: `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer`\n   - Then: `sudo xcodebuild -runFirstLaunch`\n\n   **VS Code / Android Studio not detected:**\n   - These are optional, just inform the user\n\n4. If multiple issues found, present them as a checklist with:\n   - Issue description\n   - Severity (critical, recommended, optional)\n   - Automated fix command (if available)\n   - Manual fix instructions\n\n5. Ask: 'Would you like me to run the automated fixes? (y/n)'\n\n6. If user confirms, execute the fixes in sequence\n\n7. After fixes, run `flutter doctor -v` again to verify\n\nThis hook helps developers quickly resolve Flutter environment issues.",
+      "enabled": true
+    },
+    {
+      "name": "session-start-flutter",
+      "events": ["SessionStart"],
+      "description": "Verify Flutter setup and check for updates when starting a new session",
+      "prompt": "When a new Claude Code session starts:\n\n1. Check if we're in a Flutter project (look for pubspec.yaml)\n\n2. If in a Flutter project:\n\n   **Environment Check:**\n   - Verify Flutter is installed: `flutter --version`\n   - If not installed, show installation guide: https://docs.flutter.dev/get-started/install\n   - Check `.claude/flutter-core.local.md` for session_start configuration\n\n   **Version Information (if enabled in config):**\n   - Show current Flutter SDK version\n   - Show current Dart SDK version\n   - If `check_version: true` in config:\n     - Check for Flutter updates: `flutter upgrade --dry-run`\n     - If updates available, inform user (don't auto-update)\n\n   **Dependency Check (if enabled in config):**\n   - If `auto_pub_get: true` in config:\n     - Check if pubspec.lock is older than pubspec.yaml\n     - If dependencies out of sync, run: `flutter pub get`\n   - If `show_outdated: true` in config:\n     - Run: `flutter pub outdated --mode=null-safety`\n     - If outdated packages found, suggest running `/flutter-upgrade deps`\n\n   **Quick Health Check:**\n   - Run: `flutter doctor` (suppress output unless issues found)\n   - If issues found, mention post-flutter-doctor hook will offer fixes\n\n   **Display Summary:**\n   ```\n   Flutter Project Detected\n   ========================\n   Project: [name from pubspec.yaml]\n   Flutter: [version]\n   Dart: [version]\n\n   Status:\n   ✓ Dependencies up to date\n   ⚠ 2 packages have updates available\n   ✓ Environment configured\n\n   Tip: Use /flutter-analyze to check code quality\n   ```\n\n3. If NOT in a Flutter project:\n   - Do nothing (don't spam non-Flutter sessions)\n\n4. If configuration file doesn't exist:\n   - Use defaults: enabled=true, auto_pub_get=true, others=false\n\nThis hook provides a helpful project status overview at session start.",
+      "enabled": true
+    }
+  ]
+}
