@@ -68,14 +68,14 @@ remove_backup() {
 }
 
 # Add plugin to marketplace.json using jq
-# Usage: add_plugin_to_marketplace marketplace_json source name description version author
+# Usage: add_plugin_to_marketplace marketplace_json source name description version keywords
 add_plugin_to_marketplace() {
     local marketplace="$1"
     local source="$2"
     local name="$3"
     local description="$4"
     local version="$5"
-    local author="$6"
+    local keywords="$6"
 
     if [[ ! -f "$marketplace" ]]; then
         print_error "Marketplace file does not exist: $marketplace"
@@ -94,13 +94,13 @@ add_plugin_to_marketplace() {
         --arg name "$name" \
         --arg description "$description" \
         --arg version "$version" \
-        --arg author "$author" \
+        --argjson keywords "$keywords" \
         '{
             source: $source,
             name: $name,
             description: $description,
             version: $version,
-            author: $author
+            keywords: $keywords
         }')
 
     # Add to marketplace
