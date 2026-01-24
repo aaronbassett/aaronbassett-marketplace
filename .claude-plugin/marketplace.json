@@ -107,6 +107,19 @@
         "attribution",
         "setup"
       ]
+    },
+    {
+      "source": "./plugins/spec-writer",
+      "name": "spec-writer",
+      "description": "Guide users through creating complete, unambiguous feature specifications using a discovery-driven process.",
+      "version": "0.1.0",
+      "keywords": [
+        "specifications",
+        "planning",
+        "documentation",
+        "process",
+        "discovery"
+      ]
     }
   ]
 }
