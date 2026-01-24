@@ -1,0 +1,20 @@
+# Local settings files
+.claude/*.local.md
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Testing artifacts
+test-sandbox/
+*.test.toml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

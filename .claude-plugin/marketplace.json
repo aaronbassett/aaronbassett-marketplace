@@ -120,6 +120,23 @@
         "process",
         "discovery"
       ]
+    },
+    {
+      "name": "sandbox",
+      "source": "./plugins/sandbox",
+      "version": "0.1.0",
+      "description": "Create isolated Docker-based development environments for running Claude Code safely",
+      "keywords": [
+        "docker",
+        "sandbox",
+        "isolation",
+        "development-environment",
+        "container",
+        "rust",
+        "python",
+        "nodejs",
+        "security"
+      ]
     }
   ]
 }
