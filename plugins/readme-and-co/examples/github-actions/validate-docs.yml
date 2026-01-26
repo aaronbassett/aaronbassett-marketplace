@@ -1,0 +1,113 @@
+name: Validate Documentation
+
+on:
+  pull_request:
+    paths:
+      - '**.md'
+      - 'templates/**'
+      - 'scripts/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate templates
+        run: |
+          python3 scripts/validate_templates.py
+
+      - name: Check for broken links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          config-file: '.github/markdown-link-check-config.json'
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'no'
+
+      - name: Lint markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            **/*.md
+            !node_modules
+            !**/node_modules
+
+      - name: Check spelling
+        uses: streetsidesoftware/cspell-action@v6
+        with:
+          files: |
+            **/*.md
+          config: .cspell.json
+          strict: false
+
+  test-template-rendering:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test minimal README template
+        run: |
+          python3 scripts/render_template.py \
+            --template templates/README/full/README-MINIMAL.template.md \
+            --vars '{"project_name":"Test","description":"Test project","installation_command":"npm install","language":"javascript","usage_example":"console.log()","license":"MIT"}' \
+            --preview
+
+      - name: Test standard README template
+        run: |
+          python3 scripts/render_template.py \
+            --template templates/README/full/README-STANDARD.template.md \
+            --vars '{"project_name":"Test","description":"Test","features":"- Feature 1","prerequisites":"Node.js 18+","installation_command":"npm install","usage_description":"Usage info","language":"javascript","usage_example":"console.log()","license":"MIT"}' \
+            --preview
+
+      - name: Test license generation
+        run: |
+          python3 scripts/populate_license.py \
+            --license MIT \
+            --holder "Test User" \
+            --year 2024 \
+            --preview
+
+      - name: Test project detection
+        run: |
+          python3 scripts/detect_project_info.py --pretty
+
+  check-freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check if README needs updating
+        run: |
+          # Generate fresh README
+          python3 scripts/detect_project_info.py > project-info-current.json
+          python3 scripts/render_template.py \
+            --template templates/README/full/README-STANDARD.template.md \
+            --vars "$(cat project-info-current.json)" \
+            --output README-generated.md
+
+          # Compare with existing README
+          if ! diff -q README.md README-generated.md > /dev/null; then
+            echo "⚠️  README.md appears to be out of sync with project info"
+            echo "Consider regenerating with: python3 scripts/render_template.py ..."
+            exit 1
+          else
+            echo "✅ README.md is up to date"
+          fi

@@ -1,0 +1,32 @@
+{
+  "github": {
+    "MIT": {
+      "spdx_id": "MIT",
+      "category": "permissive",
+      "osi_approved": true,
+      "description": "Permissive license with minimal restrictions"
+    },
+    "Apache-2.0": {
+      "spdx_id": "Apache-2.0",
+      "category": "permissive",
+      "osi_approved": true,
+      "description": "Permissive license with patent grant"
+    }
+  },
+  "creative_commons": {
+    "CC-BY-4.0": {
+      "spdx_id": "CC-BY-4.0",
+      "category": "creative-commons",
+      "osi_approved": false,
+      "description": "Creative Commons Attribution"
+    }
+  },
+  "fsl": {
+    "FSL-1.1-MIT": {
+      "spdx_id": null,
+      "category": "time-delayed-open-source",
+      "osi_approved": false,
+      "description": "Functional Source License with automatic MIT transition after 2 years"
+    }
+  }
+}
