@@ -27,3 +27,6 @@ Temporary Items
 
 # Generated reviews
 reviews/
+
+# Git worktrees
+.worktrees/
