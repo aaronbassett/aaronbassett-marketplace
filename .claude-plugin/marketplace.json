@@ -167,6 +167,18 @@
         "code-of-conduct",
         "repository-setup"
       ]
+    },
+    {
+      "source": "./plugins/bug-fixes",
+      "name": "bug-fixes",
+      "description": "Workarounds and fixes for known Claude Code issues",
+      "version": "1.0.0",
+      "keywords": [
+        "workarounds",
+        "bug-fixes",
+        "claude-plugin-root",
+        "path-resolution"
+      ]
     }
   ]
 }
