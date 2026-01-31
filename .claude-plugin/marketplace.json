@@ -1,12 +1,12 @@
 {
   "name": "aaronbassett-marketplace",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "Personal marketplace for Claude Code plugins, agents, and skills",
   "owner": {
     "name": "Aaron Bassett",
     "email": "aaronbassett@gmail.com"
   },
-  "homepage": "https://github.com/aaronbassett/claude-marketplace",
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace",
   "repository": "https://github.com/aaronbassett/aaronbassett-marketplace.git",
   "license": "MIT",
   "keywords": [
@@ -21,195 +21,52 @@
   ],
   "plugins": [
     {
+      "name": "bug-fixes",
+      "source": "./plugins/bug-fixes"
+    },
+    {
+      "name": "constitution",
+      "source": "./plugins/constitution"
+    },
+    {
       "name": "dev-specialisms",
-      "source": "./plugins/dev-specialisms",
-      "version": "0.1.0",
-      "description": "Niche developer skills for deployment, CI/CD, AI/LLM integration, and DevX tooling",
-      "keywords": [
-        "deployment",
-        "CI",
-        "AI",
-        "LLM",
-        "UI",
-        "UX",
-        "devx",
-        "hashbrown",
-        "tooling",
-        "fly-deploy",
-        "init-local-tooling"
-      ]
+      "source": "./plugins/dev-specialisms"
     },
     {
       "name": "devs",
-      "source": "./plugins/devs",
-      "version": "0.1.0",
-      "description": "Core language and framework skills for Python, Rust, TypeScript, React, and security",
-      "keywords": [
-        "code",
-        "dev",
-        "development",
-        "python",
-        "rust",
-        "typescript",
-        "react",
-        "reviews",
-        "security",
-        "components"
-      ]
+      "source": "./plugins/devs"
     },
     {
       "name": "flutter-core",
-      "source": "./plugins/flutter-core",
-      "version": "0.1.0",
-      "description": "Comprehensive Flutter and Dart development toolkit providing expert guidance on UI/UX, architecture, state management, testing, performance, deployment, and backend integration with ServerPod",
-      "keywords": [
-        "flutter",
-        "dart",
-        "mobile",
-        "ui",
-        "material-design",
-        "state-management",
-        "serverpod",
-        "testing",
-        "performance",
-        "deployment"
-      ]
+      "source": "./plugins/flutter-core"
     },
     {
       "name": "git-lovely",
-      "source": "./plugins/git-lovely",
-      "version": "0.1.0",
-      "description": "Everything you need for lovely Git workflows including GitHub CLI integration and conventional commits",
-      "keywords": [
-        "github",
-        "cli",
-        "gh",
-        "pull-requests",
-        "issues",
-        "actions",
-        "workflow",
-        "automation",
-        "git",
-        "commits",
-        "conventional-commits",
-        "commit-messages"
-      ]
+      "source": "./plugins/git-lovely"
     },
     {
-      "name": "settings-presets",
-      "source": "./plugins/settings-presets",
-      "version": "0.1.0",
-      "description": "Configuration toolkit for streamlining Claude Code project setup with powerline status line and attribution settings",
-      "keywords": [
-        "configuration",
-        "settings",
-        "powerline",
-        "attribution",
-        "setup"
-      ]
-    },
-    {
-      "source": "./plugins/spec-writer",
-      "name": "spec-writer",
-      "description": "Guide users through creating complete, unambiguous feature specifications using a discovery-driven process.",
-      "version": "0.1.0",
-      "keywords": [
-        "specifications",
-        "planning",
-        "documentation",
-        "process",
-        "discovery"
-      ]
+      "name": "readme-and-co",
+      "source": "./plugins/readme-and-co"
     },
     {
       "name": "sandbox",
-      "source": "./plugins/sandbox",
-      "version": "0.1.0",
-      "description": "Create isolated Docker-based development environments for running Claude Code safely",
-      "keywords": [
-        "docker",
-        "sandbox",
-        "isolation",
-        "development-environment",
-        "container",
-        "rust",
-        "python",
-        "nodejs",
-        "security"
-      ]
+      "source": "./plugins/sandbox"
     },
     {
-      "source": "./plugins/constitution",
-      "name": "constitution",
-      "description": "Create, validate, and enforce project constitutions with living governance",
-      "version": "0.2.0",
-      "keywords": [
-        "governance",
-        "principles",
-        "constitution",
-        "code-review",
-        "standards",
-        "validation"
-      ]
-    },
-    {
-      "source": "./plugins/readme-and-co",
-      "name": "readme-and-co",
-      "description": "Generate comprehensive GitHub repository documentation including README, LICENSE, CONTRIBUTING, SECURITY, and GitHub templates following best practices",
-      "version": "0.1.0",
-      "keywords": [
-        "documentation",
-        "readme",
-        "license",
-        "github-templates",
-        "contributing",
-        "security",
-        "code-of-conduct",
-        "repository-setup"
-      ]
-    },
-    {
-      "source": "./plugins/bug-fixes",
-      "name": "bug-fixes",
-      "description": "Workarounds and fixes for known Claude Code issues",
-      "version": "1.0.0",
-      "keywords": [
-        "workarounds",
-        "bug-fixes",
-        "claude-plugin-root",
-        "path-resolution"
-      ]
-    },
-    {
-      "source": "./plugins/sdd",
       "name": "sdd",
-      "description": "Specification-Driven Development workflow for Claude Code. A comprehensive toolkit for defining project governance, creating feature specifications, mapping codebases, planning implementations, generating tasks, and executing with quality gates.",
-      "version": "1.0.0",
-      "keywords": [
-        "specification",
-        "planning",
-        "implementation",
-        "workflow",
-        "codebase-analysis",
-        "task-generation",
-        "quality-gates"
-      ]
+      "source": "./plugins/sdd"
     },
     {
-      "source": "./plugins/worktrees",
+      "name": "settings-presets",
+      "source": "./plugins/settings-presets"
+    },
+    {
+      "name": "spec-writer",
+      "source": "./plugins/spec-writer"
+    },
+    {
       "name": "worktrees",
-      "description": "Git worktree workflows for parallel AI development",
-      "version": "0.1.0",
-      "keywords": [
-        "git",
-        "worktrees",
-        "parallel",
-        "agents",
-        "subagents",
-        "orchestrator",
-        "development",
-        "isolation"
-      ]
+      "source": "./plugins/worktrees"
     }
   ]
 }

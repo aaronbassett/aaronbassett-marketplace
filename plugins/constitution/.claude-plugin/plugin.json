@@ -1,14 +1,14 @@
 {
   "name": "constitution",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Create, validate, and enforce project constitutions with living governance",
   "author": {
     "name": "Aaron Bassett",
-    "email": "aaron@rawtech.io",
+    "email": "aaronbassett@gmail.com",
     "url": "https://aaronbassett.com"
   },
-  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/constitution",
-  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/constitution",
   "license": "MIT",
   "keywords": [
     "governance",
