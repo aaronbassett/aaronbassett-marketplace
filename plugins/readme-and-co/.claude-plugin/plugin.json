@@ -1,11 +1,15 @@
 {
   "name": "readme-and-co",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Generate comprehensive GitHub repository documentation including README, LICENSE, CONTRIBUTING, SECURITY, and GitHub templates following best practices",
   "author": {
     "name": "Aaron Bassett",
-    "email": "aaronbassett@gmail.com"
+    "email": "aaronbassett@gmail.com",
+    "url": "https://aaronbassett.com"
   },
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/readme-and-co",
+  "license": "MIT",
   "keywords": [
     "documentation",
     "readme",

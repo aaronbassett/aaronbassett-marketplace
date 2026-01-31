@@ -1,14 +1,14 @@
 {
   "name": "sdd",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "Specification-Driven Development workflow for Claude Code. A comprehensive toolkit for defining project governance, creating feature specifications, mapping codebases, planning implementations, generating tasks, and executing with quality gates.",
   "author": {
     "name": "Aaron Bassett",
-    "email": "aaron@rawtech.io",
+    "email": "aaronbassett@gmail.com",
     "url": "https://aaronbassett.com"
   },
-  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/sdd",
-  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/sdd",
   "license": "MIT",
   "keywords": [
     "specification",

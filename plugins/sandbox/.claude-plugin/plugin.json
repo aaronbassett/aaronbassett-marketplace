@@ -1,14 +1,20 @@
 {
   "name": "sandbox",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Create isolated Docker-based development environments for running Claude Code safely",
   "author": {
     "name": "Aaron Bassett",
-    "email": "aaron@rawtech.io",
+    "email": "aaronbassett@gmail.com",
     "url": "https://aaronbassett.com"
   },
-  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/sandbox",
-  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/sandbox",
   "license": "MIT",
-  "keywords": ["docker", "sandbox", "isolation", "development-environment", "container"]
+  "keywords": [
+    "docker",
+    "sandbox",
+    "isolation",
+    "development-environment",
+    "container"
+  ]
 }

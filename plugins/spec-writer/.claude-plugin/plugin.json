@@ -1,11 +1,15 @@
 {
   "name": "spec-writer",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Guide users through creating complete, unambiguous feature specifications using a discovery-driven process.",
   "author": {
     "name": "Aaron Bassett",
-    "email": "aaronbassett@gmail.com"
+    "email": "aaronbassett@gmail.com",
+    "url": "https://aaronbassett.com"
   },
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/spec-writer",
+  "license": "MIT",
   "keywords": [
     "specifications",
     "planning",
