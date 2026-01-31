@@ -1,5 +1,5 @@
 ---
-name: create
+name: sandbox:create
 description: Create a new isolated Docker-based development sandbox for running Claude Code safely
 argument-hint: ""
 allowed-tools:
@@ -59,17 +59,23 @@ Parse the answer:
 
 #### 3a.2 Detect Languages
 
-Use the language-environment-config skill's `detect_languages.py` script:
+Use the language-environment-config skill's scripts. First, dynamically locate the `detect_languages.py` script within the `sandbox` plugin's `skills/language-environment-config/scripts/` directory.
 
 ```bash
 # Clone repo to temp location first
 gh repo clone {owner/repo} /tmp/sandbox-detect-{random}
 
-# Detect languages
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/language-environment-config/scripts/detect_languages.py /tmp/sandbox-detect-{random}
+# Dynamically find and execute the script to detect languages
+# For example:
+# path_to_script=$(find . -path '*/plugins/sandbox/skills/language-environment-config/scripts/detect_languages.py')
+# python3 $path_to_script /tmp/sandbox-detect-{random}
+path_to_detect_script=$(find plugins/sandbox/skills -name "detect_languages.py")
+python3 ${path_to_detect_script} /tmp/sandbox-detect-{random}
 
-# Parse versions
-python3 ${CLAUDE_PLUGIN_ROOT}/skills/language-environment-config/scripts/parse_versions.py /tmp/sandbox-detect-{random}
+
+# Then, find and execute the script to parse versions
+path_to_parse_script=$(find plugins/sandbox/skills -name "parse_versions.py")
+python3 ${path_to_parse_script} /tmp/sandbox-detect-{random}
 
 # Clean up
 rm -rf /tmp/sandbox-detect-{random}
@@ -151,7 +157,8 @@ Ask: **"Should I create a new repository for {project_name} on GitHub?"**
 
 If yes:
 - Ask: **"Public or private?"**
-- Note: User will need to run `gh repo create` manually (provide the command)
+- Offer to run the `gh repo create` command for the user.
+- Example: `gh repo create aaronbassett/{project_name} --private --source=. --remote=origin`
 
 ---
 
@@ -379,8 +386,8 @@ Whenever you're done: `./sandbox/stop.sh`
 Then ask: **"Would you like to start the sandbox now?"**
 
 If yes:
-- Run `./sandbox/up.sh` (may run in background)
-- Show build progress
+- Run `./sandbox/up.sh &` to run the script in the background.
+- Monitor the build progress and show the output to the user.
 - When ready, indicate completion
 
 If no:

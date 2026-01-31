@@ -1,10 +1,10 @@
 ---
-name: Docker Sandbox Setup
+name: docker-sandbox-setup
 description: This skill should be used when creating Docker containers for Claude Code sandboxing, configuring isolated development environments, setting up Docker volumes and persistence, configuring port forwarding for sandboxed applications, or troubleshooting Docker container issues in sandbox contexts. Provides Docker configuration knowledge specifically for running Claude Code in contained environments.
 version: 0.1.0
 ---
 
-# Docker Sandbox Setup
+# docker-sandbox-setup
 
 Configure Docker containers to run Claude Code in isolated, safe environments that prevent AI agents from modifying the host system.
 
@@ -242,7 +242,17 @@ docker run -d \
   sandbox-${PROJECT_NAME}
 
 echo "Sandbox is starting..."
-docker logs -f sandbox-${PROJECT_NAME}
+
+# Wait and check if the container is running
+sleep 2
+if docker ps | grep -q "sandbox-${PROJECT_NAME}"; then
+    echo "✅ Sandbox is running!"
+    echo "Access it with: ./sandbox/shell.sh"
+else
+    echo "❌ Failed to start sandbox."
+    echo "Check logs: docker logs sandbox-${PROJECT_NAME}"
+    exit 1
+fi
 ```
 
 ### Interactive Shell

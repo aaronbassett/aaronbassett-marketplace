@@ -1,10 +1,10 @@
 ---
-name: Language Environment Configuration
+name: language-environment-config
 description: This skill should be used when detecting programming languages in projects, determining language versions from config files, installing development environments (Rust, Python, Node.js), setting up LSP servers, installing CLI development tools, or configuring shell environments (oh-my-zsh, starship). Provides knowledge for language detection and environment setup in sandboxes.
 version: 0.1.0
 ---
 
-# Language Environment Configuration
+# language-environment-config
 
 Detect programming languages, parse version requirements, and install complete development environments for Rust, Python, and Node.js in Docker-based sandboxes.
 

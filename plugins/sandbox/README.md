@@ -42,10 +42,10 @@ cc plugin install sandbox@aaronbassett-marketplace
 
 ### Creating a Sandbox
 
-Use the `/sandbox create` command to start the interactive setup:
+Use the `/sandbox:create` command to start the interactive setup:
 
 ```
-/sandbox create
+/sandbox:create
 ```
 
 Claude will guide you through:
@@ -111,7 +111,7 @@ Personal preferences for sandbox creation.
 Clone an existing sandbox configuration:
 
 ```
-/sandbox create
+/sandbox:create
 
 > Do you have an existing project you want to work on in the sandbox?
 No
