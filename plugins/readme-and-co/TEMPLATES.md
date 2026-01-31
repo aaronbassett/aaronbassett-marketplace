@@ -102,13 +102,43 @@ python scripts/render_template.py \
 
 ### README-COMPREHENSIVE.template.md
 
-**Location**: `templates/README/full/README-COMPREHENSIVE.template.md` (to be created)
+**Location**: `templates/README/full/README-COMPREHENSIVE.template.md`
 
-Comprehensive README with all possible sections including API docs, deployment, etc.
+Comprehensive README with all possible sections including API docs, deployment, architecture, performance, security, troubleshooting, and more.
 
 **When to use**: Large projects, frameworks, libraries with extensive APIs
 
-**Additional variables**: badges, tech_stack, api_reference, deployment_guide, troubleshooting
+**Key variables** (49 total):
+- All variables from STANDARD template
+- `api_overview`, `api_methods` - API documentation
+- `architecture_description`, `component_diagram`, `data_flow_description` - Architecture details
+- `deployment_instructions`, `docker_commands` - Deployment guides
+- `performance_description`, `benchmark_results`, `optimization_tips` - Performance info
+- `security_overview` - Security documentation
+- `common_issues`, `faq_content` - Troubleshooting and FAQ
+- `upcoming_features` - Roadmap
+- Plus many more for comprehensive documentation
+
+**Example**:
+```bash
+python scripts/render_template.py \
+  --template templates/README/full/README-COMPREHENSIVE.template.md \
+  --vars '{
+    "project_name": "my-framework",
+    "description": "A comprehensive framework for...",
+    "badges": "...",
+    "features": "- Feature 1\n- Feature 2",
+    "prerequisites": "- Node.js 18+\n- Docker",
+    "installation_command": "npm install my-framework",
+    "usage_description": "Quick start guide",
+    "usage_example": "import { Framework } from \"my-framework\"",
+    "api_overview": "Complete API reference...",
+    "architecture_description": "System architecture overview...",
+    "deployment_instructions": "Deployment steps...",
+    "license": "MIT"
+  }' \
+  --output README.md
+```
 
 ## SECURITY Templates
 
@@ -139,13 +169,45 @@ python scripts/render_template.py \
 
 ### SECURITY-ENTERPRISE.template.md
 
-**Location**: `templates/SECURITY/full/SECURITY-ENTERPRISE.template.md` (to be created)
+**Location**: `templates/SECURITY/full/SECURITY-ENTERPRISE.template.md`
 
-Enterprise security policy with SLA, bug bounty, etc.
+Enterprise-grade security policy with comprehensive security program details including bug bounty, security team, SLAs, compliance standards, security architecture, and audit procedures.
 
-**When to use**: Large/commercial projects, projects with security teams
+**When to use**: Large/commercial projects, projects with security teams, enterprises with compliance requirements
 
-**Additional variables**: security_team_url, response_sla, bug_bounty_url
+**Key variables** (44 total):
+- All variables from BASIC template
+- `policy_version`, `last_updated` - Policy metadata
+- `ciso_email`, `ciso_pgp`, `security_lead_email`, `security_lead_pgp` - Security team contacts
+- `emergency_contact`, `security_mailing_list` - Communication channels
+- `vulnerability_reporting_platform` - Reporting platform URL
+- `bug_bounty_description`, `min_bounty`, `max_bounty` - Bug bounty program
+- `compliance_standards`, `certifications`, `security_frameworks` - Compliance info
+- `auth_method`, `authz_method`, `encryption_standards` - Security architecture
+- `static_analysis_tools`, `dynamic_analysis_tools`, `dependency_scan_tools` - Security tooling
+- `pentest_frequency`, `audit_frequency` - Audit schedules
+- Plus many more for comprehensive security documentation
+
+**Example**:
+```bash
+python scripts/render_template.py \
+  --template templates/SECURITY/full/SECURITY-ENTERPRISE.template.md \
+  --vars '{
+    "project_name": "enterprise-app",
+    "policy_version": "2.0",
+    "last_updated": "2026-01-31",
+    "security_email": "security@company.com",
+    "ciso_email": "ciso@company.com",
+    "vulnerability_reporting_platform": "https://bugcrowd.com/company",
+    "bug_bounty_description": "We offer rewards from $100 to $10,000",
+    "min_bounty": "$100",
+    "max_bounty": "$10,000",
+    "compliance_standards": "SOC 2 Type II, ISO 27001, GDPR",
+    "current_version": "2.x",
+    "minimum_supported_version": "2.0"
+  }' \
+  --output SECURITY.md
+```
 
 ## CONTRIBUTING Templates
 
