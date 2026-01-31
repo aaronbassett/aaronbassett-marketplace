@@ -1,0 +1,21 @@
+{
+  "name": "worktrees",
+  "version": "0.1.0",
+  "description": "Git worktree workflows for parallel AI development",
+  "author": {
+    "name": "Aaron Bassett",
+    "email": "aaronbassett@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "keywords": [
+    "git",
+    "worktrees",
+    "parallel",
+    "agents",
+    "subagents",
+    "orchestrator",
+    "development",
+    "isolation"
+  ]
+}

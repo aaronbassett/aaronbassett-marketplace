@@ -194,6 +194,22 @@
         "task-generation",
         "quality-gates"
       ]
+    },
+    {
+      "source": "./plugins/worktrees",
+      "name": "worktrees",
+      "description": "Git worktree workflows for parallel AI development",
+      "version": "0.1.0",
+      "keywords": [
+        "git",
+        "worktrees",
+        "parallel",
+        "agents",
+        "subagents",
+        "orchestrator",
+        "development",
+        "isolation"
+      ]
     }
   ]
 }
