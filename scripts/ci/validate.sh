@@ -31,6 +31,17 @@ validate_json_syntax() {
     return 0
 }
 
+# Check if array contains element
+array_contains() {
+    local needle="$1"
+    shift
+    local element
+    for element in "$@"; do
+        [[ "$element" == "$needle" ]] && return 0
+    done
+    return 1
+}
+
 # Validation tracking
 HAS_ERRORS=false
 
@@ -73,75 +84,81 @@ while IFS= read -r source; do
 done < <(jq -r '.plugins[]?.source // empty' "$MARKETPLACE_JSON" 2>/dev/null)
 
 # Check for missing plugins (in filesystem but not marketplace)
-for plugin in "${FILESYSTEM_PLUGINS[@]}"; do
-    if [[ ! " ${MARKETPLACE_PLUGINS[@]} " =~ " ${plugin} " ]]; then
-        print_error "Plugin exists in filesystem but not listed in marketplace: $plugin"
-        HAS_ERRORS=true
-    fi
-done
+if [[ ${#FILESYSTEM_PLUGINS[@]} -gt 0 ]]; then
+    for plugin in "${FILESYSTEM_PLUGINS[@]}"; do
+        if ! array_contains "$plugin" "${MARKETPLACE_PLUGINS[@]}"; then
+            print_error "Plugin exists in filesystem but not listed in marketplace: $plugin"
+            HAS_ERRORS=true
+        fi
+    done
+fi
 
 # Check for extra plugins (in marketplace but not filesystem)
-for plugin in "${MARKETPLACE_PLUGINS[@]}"; do
-    if [[ ! " ${FILESYSTEM_PLUGINS[@]} " =~ " ${plugin} " ]]; then
-        print_error "Plugin listed in marketplace but not found in filesystem: $plugin"
-        HAS_ERRORS=true
-    fi
-done
+if [[ ${#MARKETPLACE_PLUGINS[@]} -gt 0 ]]; then
+    for plugin in "${MARKETPLACE_PLUGINS[@]}"; do
+        if ! array_contains "$plugin" "${FILESYSTEM_PLUGINS[@]}"; then
+            print_error "Plugin listed in marketplace but not found in filesystem: $plugin"
+            HAS_ERRORS=true
+        fi
+    done
+fi
 
 print_section "Validating plugin structure"
 
 SUCCESS_COUNT=0
 FAILURE_COUNT=0
 
-for plugin_name in "${FILESYSTEM_PLUGINS[@]}"; do
-    plugin_path="$PLUGINS_DIR/$plugin_name"
-    plugin_json="$plugin_path/.claude-plugin/plugin.json"
+if [[ ${#FILESYSTEM_PLUGINS[@]} -gt 0 ]]; then
+    for plugin_name in "${FILESYSTEM_PLUGINS[@]}"; do
+        plugin_path="$PLUGINS_DIR/$plugin_name"
+        plugin_json="$plugin_path/.claude-plugin/plugin.json"
 
-    # Check .claude-plugin directory exists
-    if [[ ! -d "$plugin_path/.claude-plugin" ]]; then
-        print_error "Plugin missing .claude-plugin directory: $plugin_name"
-        FAILURE_COUNT=$((FAILURE_COUNT + 1))
-        HAS_ERRORS=true
-        continue
-    fi
+        # Check .claude-plugin directory exists
+        if [[ ! -d "$plugin_path/.claude-plugin" ]]; then
+            print_error "Plugin missing .claude-plugin directory: $plugin_name"
+            FAILURE_COUNT=$((FAILURE_COUNT + 1))
+            HAS_ERRORS=true
+            continue
+        fi
 
-    # Check plugin.json exists
-    if [[ ! -f "$plugin_json" ]]; then
-        print_error "Plugin missing plugin.json: $plugin_name"
-        FAILURE_COUNT=$((FAILURE_COUNT + 1))
-        HAS_ERRORS=true
-        continue
-    fi
+        # Check plugin.json exists
+        if [[ ! -f "$plugin_json" ]]; then
+            print_error "Plugin missing plugin.json: $plugin_name"
+            FAILURE_COUNT=$((FAILURE_COUNT + 1))
+            HAS_ERRORS=true
+            continue
+        fi
 
-    # Validate JSON syntax
-    if ! validate_json_syntax "$plugin_json" "$plugin_name/plugin.json"; then
-        FAILURE_COUNT=$((FAILURE_COUNT + 1))
-        HAS_ERRORS=true
-        continue
-    fi
+        # Validate JSON syntax
+        if ! validate_json_syntax "$plugin_json" "$plugin_name/plugin.json"; then
+            FAILURE_COUNT=$((FAILURE_COUNT + 1))
+            HAS_ERRORS=true
+            continue
+        fi
 
-    # Check required fields
-    missing_fields=()
-    if ! jq -e '.name' "$plugin_json" >/dev/null 2>&1 || [[ $(jq -r '.name' "$plugin_json") == "null" ]]; then
-        missing_fields+=("name")
-    fi
-    if ! jq -e '.version' "$plugin_json" >/dev/null 2>&1 || [[ $(jq -r '.version' "$plugin_json") == "null" ]]; then
-        missing_fields+=("version")
-    fi
-    if ! jq -e '.description' "$plugin_json" >/dev/null 2>&1 || [[ $(jq -r '.description' "$plugin_json") == "null" ]]; then
-        missing_fields+=("description")
-    fi
+        # Check required fields
+        missing_fields=()
+        if ! jq -e '.name' "$plugin_json" >/dev/null 2>&1 || [[ $(jq -r '.name' "$plugin_json") == "null" ]]; then
+            missing_fields+=("name")
+        fi
+        if ! jq -e '.version' "$plugin_json" >/dev/null 2>&1 || [[ $(jq -r '.version' "$plugin_json") == "null" ]]; then
+            missing_fields+=("version")
+        fi
+        if ! jq -e '.description' "$plugin_json" >/dev/null 2>&1 || [[ $(jq -r '.description' "$plugin_json") == "null" ]]; then
+            missing_fields+=("description")
+        fi
 
-    if [[ ${#missing_fields[@]} -gt 0 ]]; then
-        print_error "Plugin $plugin_name missing required fields: ${missing_fields[*]}"
-        FAILURE_COUNT=$((FAILURE_COUNT + 1))
-        HAS_ERRORS=true
-        continue
-    fi
+        if [[ ${#missing_fields[@]} -gt 0 ]]; then
+            print_error "Plugin $plugin_name missing required fields: ${missing_fields[*]}"
+            FAILURE_COUNT=$((FAILURE_COUNT + 1))
+            HAS_ERRORS=true
+            continue
+        fi
 
-    print_success "Plugin validated: $plugin_name"
-    SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
-done
+        print_success "Plugin validated: $plugin_name"
+        SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
+    done
+fi
 
 # Print summary
 echo ""
