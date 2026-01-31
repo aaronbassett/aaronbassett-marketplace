@@ -1,16 +1,82 @@
 {
   "github": {
+    "Apache-2.0": {
+      "spdx_id": "Apache-2.0",
+      "category": "permissive",
+      "osi_approved": true,
+      "description": "Permissive license with patent grant"
+    },
+    "AGPL-3.0": {
+      "spdx_id": "AGPL-3.0",
+      "category": "copyleft",
+      "osi_approved": true,
+      "description": "Network copyleft for server-side software"
+    },
+    "BSD-2-Clause": {
+      "spdx_id": "BSD-2-Clause",
+      "category": "permissive",
+      "osi_approved": true,
+      "description": "Simplified BSD license"
+    },
+    "BSD-3-Clause": {
+      "spdx_id": "BSD-3-Clause",
+      "category": "permissive",
+      "osi_approved": true,
+      "description": "Permissive license with attribution requirements"
+    },
+    "BSL-1.0": {
+      "spdx_id": "BSL-1.0",
+      "category": "permissive",
+      "osi_approved": true,
+      "description": "Boost Software License"
+    },
+    "CC0-1.0": {
+      "spdx_id": "CC0-1.0",
+      "category": "public-domain",
+      "osi_approved": false,
+      "description": "Creative Commons public domain dedication"
+    },
+    "EPL-2.0": {
+      "spdx_id": "EPL-2.0",
+      "category": "weak-copyleft",
+      "osi_approved": true,
+      "description": "Eclipse Public License"
+    },
+    "GPL-2.0": {
+      "spdx_id": "GPL-2.0",
+      "category": "copyleft",
+      "osi_approved": true,
+      "description": "Older version of GPL with strong copyleft"
+    },
+    "GPL-3.0": {
+      "spdx_id": "GPL-3.0",
+      "category": "copyleft",
+      "osi_approved": true,
+      "description": "Strong copyleft license requiring source disclosure"
+    },
+    "LGPL-2.1": {
+      "spdx_id": "LGPL-2.1",
+      "category": "weak-copyleft",
+      "osi_approved": true,
+      "description": "Lesser GPL for libraries, allows linking with proprietary software"
+    },
     "MIT": {
       "spdx_id": "MIT",
       "category": "permissive",
       "osi_approved": true,
       "description": "Permissive license with minimal restrictions"
     },
-    "Apache-2.0": {
-      "spdx_id": "Apache-2.0",
-      "category": "permissive",
+    "MPL-2.0": {
+      "spdx_id": "MPL-2.0",
+      "category": "weak-copyleft",
       "osi_approved": true,
-      "description": "Permissive license with patent grant"
+      "description": "Mozilla Public License with file-level copyleft"
+    },
+    "Unlicense": {
+      "spdx_id": "Unlicense",
+      "category": "public-domain",
+      "osi_approved": true,
+      "description": "Public domain dedication"
     }
   },
   "creative_commons": {
@@ -19,6 +85,42 @@
       "category": "creative-commons",
       "osi_approved": false,
       "description": "Creative Commons Attribution"
+    },
+    "CC-BY-NC-4.0": {
+      "spdx_id": "CC-BY-NC-4.0",
+      "category": "creative-commons",
+      "osi_approved": false,
+      "description": "Creative Commons Attribution-NonCommercial"
+    },
+    "CC-BY-NC-ND-4.0": {
+      "spdx_id": "CC-BY-NC-ND-4.0",
+      "category": "creative-commons",
+      "osi_approved": false,
+      "description": "Creative Commons Attribution-NonCommercial-NoDerivatives"
+    },
+    "CC-BY-NC-SA-4.0": {
+      "spdx_id": "CC-BY-NC-SA-4.0",
+      "category": "creative-commons",
+      "osi_approved": false,
+      "description": "Creative Commons Attribution-NonCommercial-ShareAlike"
+    },
+    "CC-BY-ND-4.0": {
+      "spdx_id": "CC-BY-ND-4.0",
+      "category": "creative-commons",
+      "osi_approved": false,
+      "description": "Creative Commons Attribution-NoDerivatives"
+    },
+    "CC-BY-SA-4.0": {
+      "spdx_id": "CC-BY-SA-4.0",
+      "category": "creative-commons",
+      "osi_approved": false,
+      "description": "Creative Commons Attribution-ShareAlike"
+    },
+    "CC0-1.0": {
+      "spdx_id": "CC0-1.0",
+      "category": "public-domain",
+      "osi_approved": false,
+      "description": "Creative Commons public domain dedication"
     }
   },
   "fsl": {

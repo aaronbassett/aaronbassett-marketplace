@@ -4,7 +4,6 @@ Integration tests for render_template.py
 
 Tests cover:
 - Variable substitution
-- Fragment concatenation
 - Validation mode
 - Error handling
 - All variable syntaxes
@@ -230,27 +229,6 @@ class TestRenderTemplate(unittest.TestCase):
         self.assertTrue(output_path.exists())
         self.assertEqual(output_path.read_text(), 'Hello World!')
 
-    def test_render_fragments(self):
-        """Test fragment concatenation."""
-        # Create fragments
-        frag1 = self.temp_path / 'frag1.md'
-        frag1.write_text('# {{title}}')
-
-        frag2 = self.temp_path / 'frag2.md'
-        frag2.write_text('By {{author}}')
-
-        # Render fragments
-        variables = {'title': 'Project', 'author': 'John'}
-        rendered, warnings, validation = render_template(
-            fragment_paths=[frag1, frag2],
-            variables=variables
-        )
-
-        # Fragments should be joined with double newline
-        self.assertIn('# Project', rendered)
-        self.assertIn('By John', rendered)
-        self.assertIn('\n\n', rendered)
-
     def test_validate_mode(self):
         """Test validation mode doesn't render."""
         template_path = self.temp_path / 'template.md'
@@ -281,7 +259,7 @@ class TestRenderTemplate(unittest.TestCase):
             render_template(template_path=nonexistent)
 
     def test_no_input_error(self):
-        """Test that no template or fragments raises error."""
+        """Test that no template raises error."""
         with self.assertRaises(ValueError):
             render_template()
 

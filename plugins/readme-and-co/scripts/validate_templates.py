@@ -72,9 +72,6 @@ class TemplateValidator:
         self._validate_funding_templates()
         self._validate_governance_templates()
 
-        # Check for empty fragments directories (warnings)
-        self._check_empty_fragments()
-
         success = len(self.errors) == 0
         return success, self._build_results()
 
@@ -360,20 +357,6 @@ class TemplateValidator:
                     )
         except Exception as e:
             self.errors.append(f"Error reading {yaml_file.name}: {e}")
-
-    def _check_empty_fragments(self) -> None:
-        """Check for empty fragments directories (warnings)."""
-        for category_dir in self.templates_dir.iterdir():
-            if not category_dir.is_dir():
-                continue
-
-            fragments_dir = category_dir / "fragments"
-            if fragments_dir.exists() and fragments_dir.is_dir():
-                # Check if empty
-                if not list(fragments_dir.iterdir()):
-                    self.warnings.append(
-                        f"Empty fragments directory: {category_dir.name}/fragments/"
-                    )
 
     def _build_results(self) -> Dict:
         """

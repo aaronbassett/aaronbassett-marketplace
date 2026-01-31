@@ -31,9 +31,6 @@ Usage:
     # Render template
     python render_template.py --template path/to/template.md --vars '{"name":"value"}' [--output path/to/output.md]
 
-    # Concatenate fragments
-    python render_template.py --fragments file1.md file2.md --vars '{}' --output combined.md
-
     # Preview mode (output to stdout)
     python render_template.py --template path/to/template.md --vars '{"name":"value"}' --preview
 
@@ -182,28 +179,8 @@ def write_output(content: str, output_path: Optional[Path] = None):
         print(content)
 
 
-def concatenate_fragments(fragment_paths: List[Path]) -> str:
-    """
-    Concatenate multiple fragment files.
-
-    Simple concatenation in order specified.
-    """
-    contents = []
-
-    for path in fragment_paths:
-        if not path.exists():
-            raise FileNotFoundError(f"Fragment not found: {path}")
-
-        with open(path, 'r', encoding='utf-8') as f:
-            contents.append(f.read())
-
-    # Join with double newline between fragments
-    return '\n\n'.join(contents)
-
-
 def render_template(
     template_path: Optional[Path] = None,
-    fragment_paths: Optional[List[Path]] = None,
     variables: Dict[str, str] = None,
     output_path: Optional[Path] = None,
     validate_only: bool = False
@@ -213,7 +190,6 @@ def render_template(
 
     Args:
         template_path: Path to single template file
-        fragment_paths: List of paths to fragment files (alternative to template_path)
         variables: Dictionary of variables for substitution
         output_path: Where to write output (None = stdout)
         validate_only: If True, only validate without rendering or writing output
@@ -227,13 +203,11 @@ def render_template(
     if variables is None:
         variables = {}
 
-    # Get content from template or fragments
+    # Get content from template
     if template_path:
         content = read_template(template_path)
-    elif fragment_paths:
-        content = concatenate_fragments(fragment_paths)
     else:
-        raise ValueError("Must provide either template_path or fragment_paths")
+        raise ValueError("Must provide template_path")
 
     # Validation mode - check template without rendering
     if validate_only:
@@ -300,17 +274,11 @@ def main():
     )
 
     # Template input
-    input_group = parser.add_mutually_exclusive_group(required=True)
-    input_group.add_argument(
+    parser.add_argument(
         '--template',
         type=str,
+        required=True,
         help='Path to template file'
-    )
-    input_group.add_argument(
-        '--fragments',
-        nargs='+',
-        type=str,
-        help='Paths to fragment files to concatenate'
     )
 
     # Variables
@@ -366,7 +334,6 @@ def main():
 
         # Prepare paths
         template_path = Path(args.template) if args.template else None
-        fragment_paths = [Path(f) for f in args.fragments] if args.fragments else None
         output_path = Path(args.output) if args.output else None
 
         # Handle preview mode
@@ -377,7 +344,6 @@ def main():
         # Render or validate
         rendered, warnings, validation = render_template(
             template_path=template_path,
-            fragment_paths=fragment_paths,
             variables=variables,
             output_path=output_path,
             validate_only=args.validate

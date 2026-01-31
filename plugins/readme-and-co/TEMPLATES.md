@@ -1,6 +1,6 @@
 # Template Library Reference
 
-Complete reference for all templates and fragments in the readme-and-co plugin.
+Complete reference for all templates in the readme-and-co plugin.
 
 ## Quick Start
 
@@ -10,15 +10,6 @@ Templates are rendered using the `render_template.py` script with variable subst
 python scripts/render_template.py \
   --template templates/README/full/README-STANDARD.template.md \
   --vars '{"project_name":"my-app","description":"A cool tool"}' \
-  --output README.md
-```
-
-Fragments can be concatenated:
-
-```bash
-python scripts/render_template.py \
-  --fragments templates/README/fragments/header.md templates/README/fragments/installation.md \
-  --vars '{"project_name":"my-app"}' \
   --output README.md
 ```
 
@@ -320,33 +311,6 @@ python scripts/render_template.py \
   --output .github/pull_request_template.md
 ```
 
-## Template Fragments
-
-Fragments are reusable sections that can be combined to build custom documentation.
-
-### README Fragments
-
-Located in `templates/README/fragments/`:
-
-- `header.md` - Project title and description with badges
-- `features.md` - Features section
-- `installation.md` - Installation instructions
-- `usage.md` - Usage examples
-- `contributing-link.md` - Link to CONTRIBUTING.md
-- `license-badge.md` - License badge
-- `tech-stack.md` - Technology stack section
-
-**Combining fragments**:
-```bash
-python scripts/render_template.py \
-  --fragments \
-    templates/README/fragments/header.md \
-    templates/README/fragments/features.md \
-    templates/README/fragments/installation.md \
-  --vars '{"project_name":"my-app"}' \
-  --output README.md
-```
-
 ## Template Rendering
 
 ### Variable Substitution
@@ -394,14 +358,6 @@ Full templates should:
 - Include all required sections for the document type
 - Have `.template.md` or `.template.txt` extension
 
-### Fragments
-
-Fragments should:
-- Be focused on a single section
-- Work well when concatenated
-- Use consistent variable names across fragments
-- Not include document headers (use in full templates)
-
 ## Validation Rules
 
 All templates must:
@@ -434,8 +390,6 @@ To add a new template:
 
 - Full templates: `DOCUMENT-TYPE-VARIANT.template.ext`
   - Examples: `README-MINIMAL.template.md`, `SECURITY-BASIC.template.md`
-- Fragments: `section-name.md`
-  - Examples: `installation.md`, `features.md`
 - Extensions: `.template.md` for Markdown, `.template.txt` for plain text, `.template.yml` for YAML
 
 ## Additional Resources

@@ -7,7 +7,7 @@ Generate comprehensive GitHub repository documentation following best practices.
 - **Conversational workflow**: Interactive agent guides you through documentation creation
 - **Project-aware**: Analyzes your repository to provide contextual recommendations
 - **Comprehensive license library**: 21 licenses including all GitHub licenses, Creative Commons, and FSL-1.1-MIT
-- **Template system**: 70+ templates and fragments for customizable documentation
+- **Template system**: 70+ templates for customizable documentation
 - **Smart defaults**: Detects project type, languages, frameworks, and existing documentation
 - **Best practices**: Built-in guidance following industry standards
 
@@ -102,7 +102,6 @@ See `LICENSES.md` for detailed license guidance.
 The plugin uses a template-based architecture:
 
 - **70+ templates**: Organized by document type with minimal, standard, and comprehensive variants
-- **Fragments**: Reusable sections that can be combined for custom documentation
 - **Variable substitution**: Smart defaults with project detection
 - **No context overhead**: Templates are rendered by Python scripts, never loaded into agent context
 
@@ -165,7 +164,7 @@ For project-specific preferences, you can create `.claude/readme-and-co.local.md
 ## Requirements
 
 - Claude Code
-- Python 3.7+ (for template rendering)
+- Python 3.9+ (for template rendering)
 - Git (for project detection)
 
 ## License

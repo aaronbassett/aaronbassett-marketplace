@@ -261,10 +261,8 @@ class TestTemplateConsistency(unittest.TestCase):
             # Find all potential template files
             for file in template_dir.rglob('*'):
                 if file.is_file() and not file.name.startswith('.'):
-                    # Skip metadata files and fragment directories
+                    # Skip metadata files
                     if file.suffix in ['.json', '.yaml']:
-                        continue
-                    if 'fragments' in file.parts:
                         continue
 
                     # Should contain .template somewhere in name
@@ -338,26 +336,6 @@ class TestTemplateCount(unittest.TestCase):
                 0,
                 f"Category {category} has no templates"
             )
-
-
-class TestFragmentsDirectories(unittest.TestCase):
-    """Test that fragment directories exist (even if empty)."""
-
-    def setUp(self):
-        """Set up paths."""
-        self.plugin_root = Path(__file__).parent.parent
-        self.templates_dir = self.plugin_root / 'templates'
-
-    def test_fragment_directories_exist(self):
-        """Test that fragment directories exist for composition."""
-        # Each template category should have a fragments/ subdirectory
-        for template_dir in self.templates_dir.iterdir():
-            if not template_dir.is_dir():
-                continue
-
-            fragments_dir = template_dir / 'fragments'
-            # Fragments directories should exist (may be empty initially)
-            # This is noted in validation script output as expected
 
 
 if __name__ == '__main__':

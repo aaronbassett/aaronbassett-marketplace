@@ -9,7 +9,6 @@ Comprehensive integration tests for the readme-and-co plugin.
 1. **test_render_template.py** (32 tests)
    - Variable substitution
    - Template validation
-   - Fragment concatenation
    - Error handling
    - Edge cases (Unicode, special characters, etc.)
 
