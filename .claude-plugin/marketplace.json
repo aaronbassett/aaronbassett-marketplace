@@ -179,6 +179,21 @@
         "claude-plugin-root",
         "path-resolution"
       ]
+    },
+    {
+      "source": "./plugins/sdd",
+      "name": "sdd",
+      "description": "Specification-Driven Development workflow for Claude Code. A comprehensive toolkit for defining project governance, creating feature specifications, mapping codebases, planning implementations, generating tasks, and executing with quality gates.",
+      "version": "1.0.0",
+      "keywords": [
+        "specification",
+        "planning",
+        "implementation",
+        "workflow",
+        "codebase-analysis",
+        "task-generation",
+        "quality-gates"
+      ]
     }
   ]
 }
