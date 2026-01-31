@@ -7,6 +7,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/../lib/colors.sh"
 
+# Check if array contains element
+contains_element() {
+    local element="$1"
+    shift
+    local item
+    for item in "$@"; do
+        [[ "$item" == "$element" ]] && return 0
+    done
+    return 1
+}
+
 print_section "Pre-commit validation"
 
 # Get staged files
@@ -23,7 +34,7 @@ while IFS= read -r file; do
     if [[ "$file" =~ ^plugins/([^/]+)/ ]]; then
         plugin="${BASH_REMATCH[1]}"
         # Add to array if not already present
-        if [[ ! " ${PLUGINS[@]:-} " =~ " ${plugin} " ]]; then
+        if ! contains_element "$plugin" "${PLUGINS[@]:-}"; then
             PLUGINS+=("$plugin")
         fi
     fi
@@ -49,7 +60,7 @@ fi
 # Check if marketplace.json is staged
 if echo "$STAGED_FILES" | grep -q "^\.claude-plugin/marketplace\.json$"; then
     print_info "Validating marketplace.json"
-    if ! "$SCRIPT_DIR/../validate-marketplace.sh" --skip-plugins --quiet; then
+    if ! "$SCRIPT_DIR/../validate-marketplace.sh" --skip-plugins; then
         print_error "Marketplace validation failed"
         VALIDATION_FAILED=true
     fi
