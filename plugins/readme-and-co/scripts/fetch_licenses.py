@@ -251,7 +251,7 @@ def main():
     parser.add_argument(
         '--plugin-root',
         type=str,
-        help='Plugin root directory (default: from CLAUDE_PLUGIN_ROOT or parent of script)'
+        help='Plugin root directory (default: computed from script location)'
     )
 
     parser.add_argument(
@@ -265,8 +265,6 @@ def main():
     # Determine plugin root
     if args.plugin_root:
         plugin_root = Path(args.plugin_root)
-    elif 'CLAUDE_PLUGIN_ROOT' in os.environ:
-        plugin_root = Path(os.environ['CLAUDE_PLUGIN_ROOT'])
     else:
         plugin_root = Path(__file__).parent.parent
 

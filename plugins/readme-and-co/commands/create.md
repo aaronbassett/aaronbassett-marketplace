@@ -142,7 +142,9 @@ The command uses Python scripts for template rendering (context-efficient):
 ```bash
 # Agent never reads templates into context
 # Instead calls render_template.py:
-python ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
+# Note: Agent invokes bug-fixes:find-claude-plugin-root skill first
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
+python "$PLUGIN_ROOT/scripts/render_template.py" \
   --template templates/README/full/README-STANDARD.template.md \
   --vars '{"project_name":"my-app","description":"..."}' \
   --output README.md

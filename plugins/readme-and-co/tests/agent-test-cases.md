@@ -2,6 +2,18 @@
 
 This document provides comprehensive test cases for the readme-and-co plugin's doc-generator agent and related functionality.
 
+## Test Setup
+
+These test cases assume `/tmp/cpr.py` exists. Generate it with:
+```bash
+# Invoke the skill
+Skill(skill="bug-fixes:find-claude-plugin-root")
+
+# Then in bash commands, use:
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
+# Use $PLUGIN_ROOT in paths
+```
+
 ## Table of Contents
 
 1. [Basic README Generation](#test-case-1-basic-readme-generation)
@@ -37,13 +49,13 @@ EOF
 
 1. **Detect project info**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py --pretty
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py --pretty
    ```
 
 2. **Generate README**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md \
      --vars '{"project_name":"my-app","description":"A simple Python app","installation_command":"pip install -e .","language":"python","usage_example":"from my_app import main\nmain()","license":"MIT"}' \
      --output README.md
    ```
@@ -84,7 +96,7 @@ git config user.email "test@example.com"
 
 1. **MIT License with auto-detection**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/populate_license.py \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/populate_license.py \
      --license MIT \
      --auto-detect \
      --output LICENSE
@@ -92,7 +104,7 @@ git config user.email "test@example.com"
 
 2. **Apache 2.0 License with manual info**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/populate_license.py \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/populate_license.py \
      --license Apache-2.0 \
      --holder "My Company" \
      --year 2024 \
@@ -101,7 +113,7 @@ git config user.email "test@example.com"
 
 3. **Preview without writing**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/populate_license.py \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/populate_license.py \
      --license MIT \
      --holder "Preview Test" \
      --year 2024 \
@@ -157,16 +169,16 @@ EOF
 
 1. **Render README using config**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md \
      --vars '{"installation_command":"npm install","language":"javascript","usage_example":"import thing from \u0027thing\u0027"}' \
      --output README.md
    ```
 
 2. **Override config with CLI**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md \
      --vars '{"project_name":"OverriddenName","description":"CLI override","installation_command":"npm install","language":"javascript","usage_example":"test","license":"MIT"}' \
      --preview
    ```
@@ -228,14 +240,14 @@ EOF
 
 1. **Detect project with badges**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py --pretty
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py --pretty
    ```
 
 2. **Generate README with badges**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py > project-info.json
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py > project-info.json
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md \
      --vars "$(cat project-info.json)" \
      --preview
    ```
@@ -251,8 +263,8 @@ EOF
 ### Verification
 
 ```bash
-python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py | jq '.badges' && echo "✅ Badges generated"
-python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py | grep "shields.io" && echo "✅ Shields.io badges present"
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py | jq '.badges' && echo "✅ Badges generated"
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py | grep "shields.io" && echo "✅ Shields.io badges present"
 ```
 
 ---
@@ -279,21 +291,21 @@ echo '{"name": "@myorg/api"}' > packages/api/package.json
 
 1. **Detect monorepo structure**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py --pretty
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py --pretty
    ```
 
 2. **Generate root README**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/monorepo/ROOT.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/monorepo/ROOT.template.md \
      --vars '{"project_name":"MyMonorepo","description":"A monorepo project","badges":"","monorepo_type":"pnpm-workspaces","package_count":"3","package_table":"| Package | Description |\n|---------|-------------|\n| @myorg/core | Core package |\n| @myorg/utils | Utilities |\n| @myorg/api | API layer |","prerequisites":"Node.js 18+, pnpm","install_command":"pnpm install","build_command":"pnpm build","dev_command":"pnpm dev","package_command_example":"pnpm --filter @myorg/core dev","add_dependency_example":"pnpm --filter @myorg/core add lodash","new_package_instructions":"Copy existing package structure","test_command":"pnpm test","test_package_command":"pnpm --filter @myorg/core test","workspace_scripts":"build, test, dev, lint, clean","package_descriptions":"See individual package READMEs","license":"MIT"}' \
      --output README.md
    ```
 
 3. **Generate package README**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/monorepo/PACKAGE.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/monorepo/PACKAGE.template.md \
      --vars '{"package_name":"core","badges":"","project_name":"MyMonorepo","root_readme_path":"../../README.md","description":"Core functionality","install_command":"pnpm install","external_install_command":"npm install @myorg/core","usage_description":"Import and use core functions","language":"typescript","usage_example":"import { fn } from \u0027@myorg/core\u0027;","api_documentation":"See API.md","workspace_install_command":"pnpm install","build_this_package_command":"pnpm --filter @myorg/core build","dev_command":"pnpm --filter @myorg/core dev","test_command":"pnpm --filter @myorg/core test","test_watch_command":"pnpm --filter @myorg/core test --watch","build_command":"pnpm --filter @myorg/core build","internal_dependencies":"@myorg/utils","external_dependencies":"lodash","related_packages":"@myorg/utils, @myorg/api","contributing_path":"../../CONTRIBUTING.md","license":"MIT","license_path":"../../LICENSE"}' \
      --output packages/core/README.md
    ```
@@ -310,7 +322,7 @@ echo '{"name": "@myorg/api"}' > packages/api/package.json
 ### Verification
 
 ```bash
-python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py | jq '.monorepo.package_count' | grep 3 && echo "✅ Detected 3 packages"
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py | jq '.monorepo.package_count' | grep 3 && echo "✅ Detected 3 packages"
 grep "pnpm-workspaces" README.md && echo "✅ Monorepo type mentioned"
 test -f packages/core/README.md && echo "✅ Package README generated"
 grep "MyMonorepo" packages/core/README.md && echo "✅ Package links to root"
@@ -326,15 +338,15 @@ grep "MyMonorepo" packages/core/README.md && echo "✅ Package links to root"
 
 1. **Preview README rendering**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md \
      --vars '{"project_name":"PreviewTest","description":"Testing preview","installation_command":"npm install","language":"javascript","usage_example":"test()","license":"MIT"}' \
      --preview
    ```
 
 2. **Preview license generation**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/populate_license.py \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/populate_license.py \
      --license MIT \
      --holder "Preview User" \
      --year 2024 \
@@ -352,7 +364,7 @@ grep "MyMonorepo" packages/core/README.md && echo "✅ Package links to root"
 
 ```bash
 # Should output content, not create file
-python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md --vars '{"project_name":"Test","description":"Test","installation_command":"npm i","language":"js","usage_example":"x","license":"MIT"}' --preview | grep "# Test" && echo "✅ Preview outputs content"
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md --vars '{"project_name":"Test","description":"Test","installation_command":"npm i","language":"js","usage_example":"x","license":"MIT"}' --preview | grep "# Test" && echo "✅ Preview outputs content"
 ```
 
 ---
@@ -365,23 +377,23 @@ python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py --template ${CLAUDE_PLU
 
 1. **Validate template with all variables**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md \
      --vars '{"project_name":"Test","description":"Test","installation_command":"npm install","language":"javascript","usage_example":"console.log()","license":"MIT"}' \
      --validate
    ```
 
 2. **Validate template with missing variables**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-MINIMAL.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-MINIMAL.template.md \
      --vars '{"project_name":"Test"}' \
      --validate
    ```
 
 3. **Validate all templates**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/validate_templates.py
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/validate_templates.py
    ```
 
 ### Expected Results
@@ -394,7 +406,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py --template ${CLAUDE_PLU
 ### Verification
 
 ```bash
-python3 ${CLAUDE_PLUGIN_ROOT}/scripts/validate_templates.py && echo "✅ All templates valid"
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/validate_templates.py && echo "✅ All templates valid"
 ```
 
 ---
@@ -413,12 +425,12 @@ mkdir test-hooks && cd test-hooks
 
 1. **Verify hook exists**:
    ```bash
-   test -f ${CLAUDE_PLUGIN_ROOT}/hooks/PostToolUse/doc-update-check.md && echo "✅ Hook file exists"
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && test -f "$PLUGIN_ROOT"/hooks/PostToolUse/doc-update-check.md && echo "✅ Hook file exists"
    ```
 
 2. **Check hook frontmatter**:
    ```bash
-   head -7 ${CLAUDE_PLUGIN_ROOT}/hooks/PostToolUse/doc-update-check.md | grep "event: PostToolUse" && echo "✅ Hook configured for PostToolUse"
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && head -7 "$PLUGIN_ROOT"/hooks/PostToolUse/doc-update-check.md | grep "event: PostToolUse" && echo "✅ Hook configured for PostToolUse"
    ```
 
 3. **Test with config disabled**:
@@ -456,8 +468,8 @@ EOF
 ### Verification
 
 ```bash
-grep "name: doc-update-check" ${CLAUDE_PLUGIN_ROOT}/hooks/PostToolUse/doc-update-check.md && echo "✅ Hook name correct"
-grep "tools:" ${CLAUDE_PLUGIN_ROOT}/hooks/PostToolUse/doc-update-check.md && echo "✅ Tools specified"
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && grep "name: doc-update-check" "$PLUGIN_ROOT"/hooks/PostToolUse/doc-update-check.md && echo "✅ Hook name correct"
+PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && grep "tools:" "$PLUGIN_ROOT"/hooks/PostToolUse/doc-update-check.md && echo "✅ Tools specified"
 ```
 
 ---
@@ -495,20 +507,20 @@ EOF
 
 1. **Detect project**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py > project-info.json
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/detect_project_info.py > project-info.json
    ```
 
 2. **Generate README**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-STANDARD.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/render_template.py \
+     --template "$PLUGIN_ROOT"/templates/README/full/README-STANDARD.template.md \
      --vars "$(cat project-info.json)" \
      --output README.md
    ```
 
 3. **Generate LICENSE**:
    ```bash
-   python3 ${CLAUDE_PLUGIN_ROOT}/scripts/populate_license.py \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co) && python3 "$PLUGIN_ROOT"/scripts/populate_license.py \
      --license MIT \
      --auto-detect \
      --output LICENSE

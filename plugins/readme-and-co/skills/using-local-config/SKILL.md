@@ -8,12 +8,20 @@ description: Configure readme-and-co plugin with project-specific defaults using
 
 The readme-and-co plugin supports project-specific configuration through a local config file. This allows you to set default values that apply to your project without repeating them in every command.
 
+## Setup
+
+First, ensure plugin path resolution works:
+```
+Skill(skill="bug-fixes:find-claude-plugin-root")
+```
+
 ## Quick Start
 
 1. **Copy the example config**:
    ```bash
    mkdir -p .claude
-   cp ${CLAUDE_PLUGIN_ROOT}/examples/readme-and-co.local.md .claude/readme-and-co.local.md
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
+   cp "$PLUGIN_ROOT/examples/readme-and-co.local.md" .claude/readme-and-co.local.md
    ```
 
 2. **Edit the config** to match your project:
@@ -228,7 +236,8 @@ The plugin uses a simple YAML parser. If you have complex YAML:
 1. **Setup** (once per project):
    ```bash
    mkdir -p .claude
-   cp ${CLAUDE_PLUGIN_ROOT}/examples/readme-and-co.local.md .claude/readme-and-co.local.md
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
+   cp "$PLUGIN_ROOT/examples/readme-and-co.local.md" .claude/readme-and-co.local.md
    # Edit .claude/readme-and-co.local.md
    git add .claude/readme-and-co.local.md
    git commit -m "Add readme-and-co config"

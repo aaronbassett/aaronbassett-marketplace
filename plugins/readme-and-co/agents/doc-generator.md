@@ -55,6 +55,17 @@ You are a repository documentation specialist who helps developers create compre
 
 ## Your Workflow
 
+### Phase 0: Environment Setup
+
+**Ensure plugin path resolution works:**
+
+Invoke the find-claude-plugin-root skill:
+```
+Skill(skill="bug-fixes:find-claude-plugin-root")
+```
+
+This creates `/tmp/cpr.py` which resolves plugin paths when `${CLAUDE_PLUGIN_ROOT}` doesn't work in bash commands.
+
 ### Phase 1: Project Analysis
 
 **Understand the context before asking questions.**
@@ -70,7 +81,8 @@ You are a repository documentation specialist who helps developers create compre
 
 2. **Run project detection script** for structured data:
    ```bash
-   python ${CLAUDE_PLUGIN_ROOT}/scripts/detect_project_info.py
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
+   python "$PLUGIN_ROOT/scripts/detect_project_info.py"
    ```
 
 3. **Synthesize findings** to inform your recommendations:
@@ -211,15 +223,17 @@ Select: ○ Must have ○ Should have ○ All ○ Custom selection
 
 2. **Call render_template.py**:
    ```bash
-   python ${CLAUDE_PLUGIN_ROOT}/scripts/render_template.py \
-     --template ${CLAUDE_PLUGIN_ROOT}/templates/README/full/README-STANDARD.template.md \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
+   python "$PLUGIN_ROOT/scripts/render_template.py" \
+     --template "$PLUGIN_ROOT/templates/README/full/README-STANDARD.template.md" \
      --vars '{"project_name":"my-app","description":"A cool tool","author":"John Doe"}' \
      --output README.md
    ```
 
 3. **For licenses, use populate_license.py**:
    ```bash
-   python ${CLAUDE_PLUGIN_ROOT}/scripts/populate_license.py \
+   PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
+   python "$PLUGIN_ROOT/scripts/populate_license.py" \
      --license MIT \
      --holder "Jane Doe" \
      --year 2026 \

@@ -1,0 +1,19 @@
+{
+  "name": "bug-fixes",
+  "version": "1.0.0",
+  "description": "Workarounds and fixes for known Claude Code issues",
+  "author": {
+    "name": "Aaron Bassett",
+    "email": "aaron@rawtech.io",
+    "url": "https://aaronbassett.com"
+  },
+  "homepage": "https://github.com/aaronbassett/aaronbassett-marketplace/tree/main/plugins/bug-fixes",
+  "repository": "https://github.com/aaronbassett/aaronbassett-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "workarounds",
+    "bug-fixes",
+    "claude-plugin-root",
+    "path-resolution"
+  ]
+}

@@ -225,7 +225,7 @@ def populate_license(
     """
     # Determine plugin root
     if plugin_root is None:
-        plugin_root = Path(os.environ.get('CLAUDE_PLUGIN_ROOT', Path(__file__).parent.parent))
+        plugin_root = Path(__file__).parent.parent
 
     # Normalize license name
     license_name = normalize_license_name(license_name)
@@ -317,7 +317,7 @@ def main():
     parser.add_argument(
         '--plugin-root',
         type=str,
-        help='Plugin root directory (default: from CLAUDE_PLUGIN_ROOT env var)'
+        help='Plugin root directory (default: computed from script location)'
     )
 
     parser.add_argument(
