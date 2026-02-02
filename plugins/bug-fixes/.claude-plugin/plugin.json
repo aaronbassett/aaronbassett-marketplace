@@ -1,6 +1,6 @@
 {
   "name": "bug-fixes",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Workarounds and fixes for known Claude Code issues",
   "author": {
     "name": "Aaron Bassett",
