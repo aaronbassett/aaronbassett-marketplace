@@ -21,10 +21,6 @@
   ],
   "plugins": [
     {
-      "name": "bug-fixes",
-      "source": "./plugins/bug-fixes"
-    },
-    {
       "name": "constitution",
       "source": "./plugins/constitution"
     },
