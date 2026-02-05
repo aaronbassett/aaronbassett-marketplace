@@ -4,6 +4,7 @@
 # Color constants
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+DIM_GREEN='\033[2;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 CYAN='\033[0;36m'
@@ -17,6 +18,11 @@ print_error() {
 # Print success message in green
 print_success() {
     echo -e "${GREEN}✓ $*${NC}"
+}
+
+# Print sub-success message in dim green (for nested/detail items)
+print_success_dim() {
+    echo -e "${DIM_GREEN}✓ $*${NC}"
 }
 
 # Print warning message in yellow

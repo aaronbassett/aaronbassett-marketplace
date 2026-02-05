@@ -109,8 +109,9 @@ if [[ "$SKIP_PLUGINS" != "true" ]]; then
         PLUGIN_COUNT=$((PLUGIN_COUNT + 1))
         plugin_path="$plugin_source"
 
-        # Make path absolute if relative
+        # Make path absolute if relative and normalize (remove ./ prefix)
         if [[ ! "$plugin_path" = /* ]]; then
+            plugin_path="${plugin_path#./}"
             plugin_path="$(pwd)/$plugin_path"
         fi
 
