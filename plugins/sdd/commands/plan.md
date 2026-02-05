@@ -246,13 +246,13 @@ PLUGIN_ROOT=$(python3 /tmp/cpr.py sdd)
 
    d. **Generate Tech-Specific Commands** (using skills):
       - For each detected technology, invoke relevant skill to suggest commands:
-        - TypeScript project: Use typescript-core
+        - TypeScript project: Use devs:typescript-core
           - Prompt: "What are the key TypeScript/Node.js commands developers should know for this project structure?"
-        - Python/FastAPI project: Use python-core
+        - Python/FastAPI project: Use devs:python-core
           - Prompt: "What are essential Python/FastAPI commands for this project?"
-        - Rust project: Use rust-core
+        - Rust project: Use devs:rust-core
           - Prompt: "What are critical Rust/Cargo commands for this project?"
-        - Next.js project: Use react-core
+        - Next.js project: Use devs:react-core
           - Prompt: "What are important Next.js commands for this app structure?"
       - Add skill-generated commands to appropriate section in CLAUDE.md
 
@@ -288,7 +288,7 @@ PLUGIN_ROOT=$(python3 /tmp/cpr.py sdd)
      - `pyproject.toml` with workspace config → Python monorepo
 
 2. **Invoke Init-Local-Tooling Skill**:
-   - Use the Skill tool to invoke `/init-local-tooling` with detected context:
+   - Use the Skill tool to invoke `/dev-specialisms:init-local-tooling` with detected context:
      ```
      Skill: init-local-tooling
      Args: "{language} project in {FEATURE_DIR}, {monorepo_type if detected}"

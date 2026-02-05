@@ -1,7 +1,7 @@
 ---
 name: react-dev
 description: "Use this agent when you need to build, refactor, or debug React components and applications. This includes creating new components, implementing state management, optimizing performance, handling hooks, working with React Router, integrating with APIs, or solving React-specific architectural challenges.\\n\\nExamples:\\n- <example>\\nuser: \"I need to create a reusable dropdown component with keyboard navigation support\"\\nassistant: \"I'm going to use the Task tool to launch the react-dev agent to create this component with proper accessibility features.\"\\n</example>\\n\\n- <example>\\nuser: \"My React app is re-rendering too often and causing performance issues\"\\nassistant: \"Let me use the Task tool to launch the react-dev agent to analyze and optimize the rendering performance.\"\\n</example>\\n\\n- <example>\\nuser: \"Can you help me implement a custom hook for managing form state?\"\\nassistant: \"I'll use the Task tool to launch the react-dev agent to create a well-structured custom hook following React best practices.\"\\n</example>\\n\\n- <example>\\nuser: \"I'm getting an error about 'Cannot read property of undefined' in my component\"\\nassistant: \"I'm going to use the Task tool to launch the react-dev agent to debug this issue and implement proper error handling.\"\\n</example>"
-skills: typescript-core, react-core, react-components
+skills: devs:typescript-core, devs:react-core, devs:react-components
 model: inherit
 color: cyan
 ---

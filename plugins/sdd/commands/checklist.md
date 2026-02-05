@@ -123,35 +123,35 @@ You **MUST** consider the user input before proceeding (if not empty).
    b. **Invoke Skills for Tech-Specific Items**:
 
       **UX Domain + React/Next.js**:
-      - Reference react-core and react-components
+      - Reference devs:react-core and devs:react-components
       - Prompt: "What are critical requirements quality checks for React/Next.js component specifications? Focus on requirements, not implementation."
       - Add tech-specific items like:
         - "Are component prop requirements explicitly typed and documented? [Clarity, Gap]"
         - "Are client/server component boundaries clearly specified in requirements? [Completeness, Next.js-specific]"
 
       **API Domain + FastAPI**:
-      - Reference python-core
+      - Reference devs:python-core
       - Prompt: "What are essential requirements quality checks for FastAPI endpoint specifications?"
       - Add tech-specific items like:
         - "Are request/response schema requirements defined with Pydantic models? [Completeness, Gap]"
         - "Are async/sync requirements specified for each endpoint? [Clarity, FastAPI-specific]"
 
       **Security Domain + TypeScript**:
-      - Reference typescript-core and security-core
+      - Reference devs:typescript-core and devs:security-core
       - Prompt: "What security requirements should be validated for TypeScript applications?"
       - Add tech-specific items like:
         - "Are type safety requirements specified to prevent runtime type errors? [Security, Gap]"
         - "Are input validation requirements defined at type boundaries? [Security, Completeness]"
 
       **Performance Domain + Next.js**:
-      - Reference typescript-core and react-core
+      - Reference devs:typescript-core and devs:react-core
       - Prompt: "What performance requirements should be specified for Next.js applications?"
       - Add tech-specific items like:
         - "Are image optimization requirements specified for all visual assets? [Performance, Gap]"
         - "Are data fetching strategy requirements defined (SSR/SSG/ISR)? [Performance, Clarity]"
 
       **API Domain + Rust**:
-      - Reference rust-core
+      - Reference devs:rust-core
       - Prompt: "What are critical requirements quality checks for Rust API specifications?"
       - Add tech-specific items like:
         - "Are ownership and borrowing requirements documented for shared resources? [Clarity, Rust-specific]"

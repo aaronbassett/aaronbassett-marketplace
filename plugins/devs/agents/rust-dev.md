@@ -1,7 +1,7 @@
 ---
 name: rust-dev
 description: "Use this agent when you need expert assistance with Rust programming tasks, including writing idiomatic Rust code, implementing complex algorithms, designing systems with Rust's ownership and borrowing principles, optimizing performance, working with async/await, managing dependencies with Cargo, implementing error handling patterns, working with traits and generics, or addressing compiler errors and warnings.\\n\\nExamples:\\n- User: 'I need to implement a thread-safe cache in Rust'\\n  Assistant: 'Let me use the Task tool to launch the rust-expert agent to design and implement a thread-safe cache using Rust's concurrency primitives.'\\n  \\n- User: 'Can you help me understand this borrow checker error?'\\n  Assistant: 'I'll use the rust-expert agent to analyze this borrow checker error and explain the ownership issue.'\\n  \\n- User: 'I want to write a parser for a custom file format'\\n  Assistant: 'I'm going to use the Task tool to launch the rust-expert agent to design and implement an efficient parser using Rust's pattern matching and error handling capabilities.'\\n  \\n- User: 'How should I structure this async Rust application?'\\n  Assistant: 'Let me use the rust-expert agent to provide architectural guidance for your async Rust application.'"
-skills: rust-core
+skills: devs:rust-core
 model: inherit
 color: orange
 ---

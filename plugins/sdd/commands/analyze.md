@@ -299,7 +299,7 @@ At end of report, output a concise Next Actions block:
 
    a. **Load Tech Stack Context**:
       - Use Read to load `.sdd/codebase/STACK.md` (if exists) to understand tech stack
-      - Identify which skills are relevant (typescript-core, python-core, rust-core, react-core, security-core)
+      - Identify which skills are relevant (devs:typescript-core, devs:python-core, devs:rust-core, devs:react-core, devs:security-core)
 
    b. **For Each High/Critical Issue**, Generate Remediation:
 
@@ -316,27 +316,27 @@ At end of report, output a concise Next Actions block:
 
       **Coverage Gap Issues**:
       - Reference skills for tech-specific requirements:
-        - TypeScript gaps: "According to typescript-core, add requirements for:
+        - TypeScript gaps: "According to devs:typescript-core, add requirements for:
                            - Type safety at API boundaries
                            - Error handling with typed exceptions"
-        - Python/FastAPI gaps: "According to python-core, add requirements for:
+        - Python/FastAPI gaps: "According to devs:python-core, add requirements for:
                         - Request/response validation schemas
                         - Async endpoint specifications"
-        - React/Next.js gaps: "According to react-core, add requirements for:
+        - React/Next.js gaps: "According to devs:react-core, add requirements for:
                         - Data fetching strategy (SSR/SSG/ISR)
                         - Image optimization specifications"
 
       **Ambiguity Issues**:
       - Provide concrete, measurable alternatives:
-        - If Performance ambiguity + Next.js: Reference react-core
+        - If Performance ambiguity + Next.js: Reference devs:react-core
           - "Replace 'fast loading' with: 'Initial page load completes in <1.5s (Lighthouse score)'"
-        - If API ambiguity + FastAPI: Reference python-core
+        - If API ambiguity + FastAPI: Reference devs:python-core
           - "Replace 'robust error handling' with: 'All endpoints return OpenAPI-compliant error responses with status code, message, and optional details field'"
 
       **Constitution Violations**:
       - Reference constitution principles directly
       - If tech-specific violation: Reference appropriate skill
-        - Example: "Constitution requires comprehensive error handling. Per python-core:
+        - Example: "Constitution requires comprehensive error handling. Per devs:python-core:
                    - Add requirements for exception hierarchy
                    - Specify logging requirements for all error paths"
 

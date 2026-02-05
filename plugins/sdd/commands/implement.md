@@ -174,7 +174,7 @@ You **MUST** consider the user input before proceeding (if not empty).
          - `.jsx` files → `devs:react-dev`
          - Next.js context (app/, pages/, next.config) → `devs:react-dev`
          - Tauri context (src-tauri/) → `devs:rust-dev`
-         - Generic/config tasks → Use init-local-tooling skill
+         - Generic/config tasks → Use dev-specialisms:init-local-tooling skill
 
       2. **Read Relevant Context** for agent:
          - `.sdd/codebase/STACK.md` (tech stack and decisions)
