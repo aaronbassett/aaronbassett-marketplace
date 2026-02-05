@@ -12,7 +12,7 @@ The readme-and-co plugin supports project-specific configuration through a local
 
 First, ensure plugin path resolution works:
 ```
-Skill(skill="bug-fixes:find-claude-plugin-root")
+Skill(skill="utils:find-claude-plugin-root")
 ```
 
 ## Quick Start
