@@ -1,5 +1,5 @@
 ---
-name: code-review
+name: devs:code-review
 description: Comprehensive code review guidance for quality, performance, and architecture across all programming languages. Use when (1) User explicitly requests code review, (2) After writing significant code changes, (3) Before commits/PRs, (4) Reviewing existing codebases, (5) Analyzing code quality, (6) Detecting performance issues, (7) Identifying architectural problems, (8) Finding code smells. Provides automated analysis scripts and manual review checklists for thorough code evaluation.
 ---
 

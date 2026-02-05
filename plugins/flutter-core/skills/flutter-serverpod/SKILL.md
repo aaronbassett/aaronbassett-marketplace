@@ -1,4 +1,5 @@
 ---
+name: flutter-core:flutter-serverpod
 description: Comprehensive Serverpod backend framework expertise for full-stack Dart/Flutter development. Use when building server-side applications with Serverpod, implementing backends for Flutter apps, working with type-safe ORMs, creating real-time features, managing authentication, or deploying production Dart servers. Covers installation, project setup, endpoints, database operations, authentication, real-time communication, file uploads, deployment, and testing.
 skill_version: 1.0.0
 skill_type: reference

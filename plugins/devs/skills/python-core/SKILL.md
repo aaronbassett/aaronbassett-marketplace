@@ -1,5 +1,5 @@
 ---
-name: python-core
+name: devs:python-core
 description: "Comprehensive Python development expertise covering modern best practices, type hints, FastAPI web development, async/await, testing, and performance optimization. Use when working on Python projects requiring guidance on: (1) Modern Python features and best practices, (2) Type hints and static typing with mypy, (3) FastAPI web development, (4) Async/await and asyncio patterns, (5) Testing with pytest, (6) Data validation with Pydantic, (7) Database integration (SQLAlchemy), (8) Project structure and dependencies, (9) Performance optimization, (10) Logging and observability, or (11) Code reviews and common errors."
 ---
 

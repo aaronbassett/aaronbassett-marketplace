@@ -1,5 +1,5 @@
 ---
-name: flutter-animations
+name: flutter-core:flutter-animations
 description: Master Flutter's animation system with implicit and explicit animations, hero transitions, physics-based motion, and custom transitions. Use when adding animations, creating transitions, implementing hero effects, or building interactive animated experiences.
 version: 1.0.0
 ---

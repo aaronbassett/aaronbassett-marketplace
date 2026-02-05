@@ -1,5 +1,5 @@
 ---
-name: using-local-config
+name: readme-and-co:using-local-config
 version: "1.0"
 description: Configure readme-and-co plugin with project-specific defaults using .claude/readme-and-co.local.md
 ---

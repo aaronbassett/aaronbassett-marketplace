@@ -1,5 +1,5 @@
 ---
-name: dependency-checker
+name: utils:dependency-checker
 description: This skill should be used when the user asks to "check dependencies", "verify plugin requirements", "what plugins am I missing", "validate plugin dependencies", or invokes /utils:dependency-checker. Validates declared dependencies in extends-plugin.json files against installed and enabled plugins.
 version: 0.1.0
 ---

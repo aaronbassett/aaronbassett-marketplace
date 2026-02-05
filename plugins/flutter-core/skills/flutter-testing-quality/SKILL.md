@@ -1,4 +1,5 @@
 ---
+name: flutter-core:flutter-testing-quality
 description: >
   Comprehensive Flutter testing and quality assurance guidance covering unit testing, widget testing,
   integration testing, golden tests, debugging techniques, code coverage, test-driven development,

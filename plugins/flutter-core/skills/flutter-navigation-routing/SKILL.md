@@ -1,5 +1,5 @@
 ---
-name: flutter-navigation-routing
+name: flutter-core:flutter-navigation-routing
 description: Expert guidance on implementing navigation and routing in Flutter applications with declarative routing patterns, GoRouter integration, deep linking, route guards, and complex navigation flows. Use when implementing navigation, setting up routing, or handling deep links.
 version: 1.0.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: react-core
+name: devs:react-core
 description: Comprehensive React application development guidance covering project architecture, state management, performance optimization, security, and modern best practices including React 19 features. Use when (1) Working in React codebases (.jsx/.tsx files), (2) Architecting React applications (project structure, state management strategies), (3) Optimizing React performance (code splitting, memoization, virtualization), (4) Implementing security best practices (auth, XSS prevention, CSRF protection), (5) Applying React 19 features (Server Components, Actions, new hooks), (6) Setting up build configurations and tooling. Automatically triggered when working with React projects or addressing React-specific architecture, performance, or security concerns.
 ---
 

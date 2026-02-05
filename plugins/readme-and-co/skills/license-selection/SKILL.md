@@ -1,5 +1,5 @@
 ---
-name: License Selection
+name: readme-and-co:license-selection
 description: This skill should be used when selecting software licenses, choosing Creative Commons licenses, discussing multi-licensing strategies, or when user asks "what license should I use", "help me choose a license", "explain FSL", "dual licensing", "MIT vs Apache", or mentions license compatibility and selection.
 version: 0.1.0
 ---

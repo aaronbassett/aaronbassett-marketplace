@@ -1,5 +1,5 @@
 ---
-name: flutter-architecture
+name: flutter-core:flutter-architecture
 description: Master Flutter app architecture patterns including MVVM, Clean Architecture, dependency injection, and design patterns for building scalable and maintainable applications. Use when designing app structure, implementing architecture patterns, or organizing code for large-scale projects.
 version: 1.0.0
 ---

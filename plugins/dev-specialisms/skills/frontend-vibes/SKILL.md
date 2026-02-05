@@ -1,5 +1,5 @@
 ---
-name: frontend-vibes
+name: dev-specialisms:frontend-vibes
 description: Create distinctive frontend interfaces with faux-ASCII aesthetic, warm dark palettes, and expressive motion. Use when user mentions ASCII art, dot matrix, scanline effects, terminal aesthetic, pixelated figures, block letterforms, "vibes", "make it vibes", "use the aesthetic from frontend-vibes", warm blacks, terracotta accents, Anthropic-adjacent design, technical romance, or wants emotionally expressive UI that balances precision with organic imperfection.
 license: MIT
 ---

@@ -1,5 +1,5 @@
 ---
-name: Configure Attribution Settings
+name: settings-presets:configure-attribution
 description: This skill should be used when the user asks to "change the commit attribution", "remove the co-authored by", "stop adding the co-authored by", "change Claude's name", "configure the PR attribution", "update attribution settings", "show that Claude is helping write commits", or "reset co-authored by settings". Manages git commit and pull request attribution in Claude Code settings.
 version: 0.1.0
 ---

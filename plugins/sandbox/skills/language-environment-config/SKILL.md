@@ -1,5 +1,5 @@
 ---
-name: language-environment-config
+name: sandbox:language-environment-config
 description: This skill should be used when detecting programming languages in projects, determining language versions from config files, installing development environments (Rust, Python, Node.js), setting up LSP servers, installing CLI development tools, or configuring shell environments (oh-my-zsh, starship). Provides knowledge for language detection and environment setup in sandboxes.
 version: 0.1.0
 ---

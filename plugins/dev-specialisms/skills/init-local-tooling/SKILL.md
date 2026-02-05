@@ -1,5 +1,5 @@
 ---
-name: init-local-tooling
+name: dev-specialisms:init-local-tooling
 description: Initialize and configure local development tooling for TypeScript, Rust, and Python projects including monorepos. Use when setting up linting (ESLint, Biome, clippy, ruff), formatting (Prettier, rustfmt, ruff), type checking (tsc, mypy), testing (Vitest, Jest, cargo test, pytest), Git hooks (lefthook for commit-msg, pre-commit, pre-push), GitHub Actions workflows, package publishing (npm, crates.io, PyPI), version management (Changesets), and automated releases. Covers both single-language projects and multi-language monorepos using Nx + pnpm workspaces.
 ---
 

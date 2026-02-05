@@ -1,5 +1,5 @@
 ---
-name: Documentation Standards
+name: readme-and-co:documentation-standards
 description: This skill should be used when creating README files, CONTRIBUTING guides, SUPPORT documentation, or any core repository documentation. Triggers when user asks to "create a README", "write documentation", "generate CONTRIBUTING", "add support docs", or discusses repository documentation standards and best practices.
 version: 0.1.0
 ---

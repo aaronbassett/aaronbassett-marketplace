@@ -1,5 +1,5 @@
 ---
-name: flutter-data-networking
+name: flutter-core:flutter-data-networking
 description: Master HTTP clients, REST APIs, GraphQL integration, WebSockets, and JSON serialization in Flutter applications. Use when implementing API calls, handling network requests, parsing JSON, or working with real-time data.
 version: 1.0.0
 ---

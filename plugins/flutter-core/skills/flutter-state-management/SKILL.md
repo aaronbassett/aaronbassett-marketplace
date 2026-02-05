@@ -1,4 +1,5 @@
 ---
+name: flutter-core:flutter-state-management
 description: >
   Comprehensive Flutter state management guidance covering built-in solutions, Provider, BLoC, and Riverpod.
   Use when working with state management, sharing data between widgets, managing app state,

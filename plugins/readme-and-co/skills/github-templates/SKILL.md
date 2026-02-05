@@ -1,5 +1,5 @@
 ---
-name: GitHub Templates
+name: readme-and-co:github-templates
 description: This skill should be used when creating GitHub issue templates, pull request templates, CODEOWNERS files, or when user asks to "create issue template", "add PR template", "set up CODEOWNERS", "create bug report template", "add feature request form", or discusses GitHub repository templates and automation.
 version: 0.1.0
 ---

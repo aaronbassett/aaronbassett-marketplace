@@ -1,4 +1,5 @@
 ---
+name: flutter-core:flutter-persistence
 description: Comprehensive guide to local data persistence in Flutter covering SharedPreferences, SQLite, Hive, Drift, and file storage strategies
 triggers:
   - "persist data"
