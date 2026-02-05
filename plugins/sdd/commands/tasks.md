@@ -25,7 +25,7 @@ Before executing this command, resolve the plugin root path for accessing templa
 
 ```bash
 # Invoke CPR resolver to create /tmp/cpr.py
-Skill(skill="bug-fixes:find-claude-plugin-root")
+Skill(skill="utils:find-claude-plugin-root")
 
 # Then use it to resolve plugin paths
 PLUGIN_ROOT=$(python3 /tmp/cpr.py sdd)

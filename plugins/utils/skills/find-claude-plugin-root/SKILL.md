@@ -1,6 +1,7 @@
 ---
 name: find-claude-plugin-root
-description: Generate CPR (Claude Plugin Root) resolver script to locate a plugin's installation path when ${CLAUDE_PLUGIN_ROOT} doesn't work in markdown files
+description: This skill should be used when the user needs to locate a plugin's installation path, when ${CLAUDE_PLUGIN_ROOT} doesn't expand in markdown files, or when invoked via /utils:find-claude-plugin-root. Generates a CPR resolver script at /tmp/cpr.py.
+version: 0.1.0
 ---
 
 # Find Claude Plugin Root
@@ -27,7 +28,7 @@ Invoke this skill before executing plugin scripts:
 
 ```bash
 # Generate the resolver
-Skill(skill="bug-fixes:find-claude-plugin-root")
+Skill(skill="utils:find-claude-plugin-root")
 
 # Use it to find a plugin and execute its scripts
 PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
@@ -153,8 +154,8 @@ chmod +x /tmp/cpr.py
 ### Step 2: Verify the script works
 
 ```bash
-# Test finding the bug-fixes plugin itself
-if PLUGIN_ROOT=$(python3 /tmp/cpr.py bug-fixes); then
+# Test finding the utils plugin itself
+if PLUGIN_ROOT=$(python3 /tmp/cpr.py utils); then
   echo "✓ CPR resolver created at /tmp/cpr.py"
   echo "✓ Test lookup succeeded: $PLUGIN_ROOT"
 else
@@ -169,7 +170,7 @@ fi
 
 ```bash
 # Invoke this skill first
-Skill(skill="bug-fixes:find-claude-plugin-root")
+Skill(skill="utils:find-claude-plugin-root")
 
 # Then use the resolver - run script and capture output
 PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)
@@ -186,14 +187,14 @@ node "$PLUGIN_ROOT/tools/analyzer.js"
 
 ## Benefits
 
-✅ **No project pollution** - Script saved to /tmp, not in project
-✅ **Backwards compatible** - Tries ${CLAUDE_PLUGIN_ROOT} first
-✅ **Fuzzy matching** - Finds plugins even if name doesn't exactly match
-✅ **Pure Python** - No external dependencies (jq not needed)
-✅ **Reusable** - One skill for all plugins
-✅ **Ephemeral** - /tmp/cpr.py cleaned up on reboot
+- **No project pollution** - Script saved to /tmp, not in project
+- **Backwards compatible** - Tries ${CLAUDE_PLUGIN_ROOT} first
+- **Fuzzy matching** - Finds plugins even if name doesn't exactly match
+- **Pure Python** - No external dependencies (jq not needed)
+- **Reusable** - One skill for all plugins
+- **Ephemeral** - /tmp/cpr.py cleaned up on reboot
 
 ## Limitations
 
-⚠️ Recreated on each system reboot (since /tmp is ephemeral)
-⚠️ Requires Python 3 (standard on all modern systems)
+- Recreated on each system reboot (since /tmp is ephemeral)
+- Requires Python 3 (standard on all modern systems)

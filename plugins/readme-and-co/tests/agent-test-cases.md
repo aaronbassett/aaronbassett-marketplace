@@ -7,7 +7,7 @@ This document provides comprehensive test cases for the readme-and-co plugin's d
 These test cases assume `/tmp/cpr.py` exists. Generate it with:
 ```bash
 # Invoke the skill
-Skill(skill="bug-fixes:find-claude-plugin-root")
+Skill(skill="utils:find-claude-plugin-root")
 
 # Then in bash commands, use:
 PLUGIN_ROOT=$(python3 /tmp/cpr.py readme-and-co)

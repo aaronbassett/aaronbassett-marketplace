@@ -36,9 +36,11 @@ This plugin was also influenced by concepts from [Get Shit Done (GSD)](https://g
    /plugin install sdd@aaronbassett-marketplace
    ```
 
-3. **IMPORTANT**: This plugin requires the `bug-fixes` plugin from the same marketplace for the CPR (Claude Plugin Root) resolver functionality. Ensure bug-fixes is installed first.
+3. **IMPORTANT**: This plugin requires the `utils` plugin from the same
+   marketplace for the CPR (Claude Plugin Root) resolver functionality.
+   Ensure utils is installed first.
    ```bash
-   /plugin install bug-fixes@aaronbassett-marketplace
+   /plugin install utils@aaronbassett-marketplace
    ```
 
 ## Quick Start

@@ -1,6 +1,6 @@
 {
   "name": "aaronbassett-marketplace",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Personal marketplace for Claude Code plugins, agents, and skills",
   "owner": {
     "name": "Aaron Bassett",
@@ -20,10 +20,6 @@
     "automation"
   ],
   "plugins": [
-    {
-      "name": "bug-fixes",
-      "source": "./plugins/bug-fixes"
-    },
     {
       "name": "constitution",
       "source": "./plugins/constitution"
@@ -63,6 +59,10 @@
     {
       "name": "spec-writer",
       "source": "./plugins/spec-writer"
+    },
+    {
+      "name": "utils",
+      "source": "./plugins/utils"
     },
     {
       "name": "worktrees",

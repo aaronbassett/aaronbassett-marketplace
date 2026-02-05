@@ -1,3 +1,9 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
 # macOS
 .DS_Store
 .AppleDouble
@@ -30,3 +36,8 @@ reviews/
 
 # Git worktrees
 .worktrees/
+
+# Generated planning/spec/task files
+docs/
+discovery/
+.sdd/

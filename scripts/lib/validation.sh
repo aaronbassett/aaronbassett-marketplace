@@ -6,6 +6,77 @@ _LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$_LIB_DIR/colors.sh"
 source "$_LIB_DIR/json.sh"
 
+# Validate extends-plugin.json if it exists
+# Usage: validate_extends_plugin path [quiet]
+# Returns: 0 if valid or doesn't exist, 1 if invalid
+validate_extends_plugin() {
+    local path="$1"
+    local quiet="${2:-false}"
+    local extends_file="$path/.claude-plugin/extends-plugin.json"
+
+    # If file doesn't exist, that's fine - it's optional
+    if [[ ! -f "$extends_file" ]]; then
+        return 0
+    fi
+
+    # Check if jq is available
+    if ! command -v jq >/dev/null 2>&1; then
+        [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_warning "jq not available, skipping extends-plugin.json validation"
+        return 0
+    fi
+
+    # Validate JSON syntax
+    if ! jq empty "$extends_file" 2>/dev/null; then
+        [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_error "Invalid JSON in extends-plugin.json: $extends_file"
+        return 1
+    fi
+
+    # Validate schema: only allowed top-level keys
+    local allowed_keys='["dependencies", "optionalDependencies", "systemDependencies", "optionalSystemDependencies"]'
+    local invalid_keys
+    invalid_keys=$(jq -r --argjson allowed "$allowed_keys" 'keys | map(select(. as $k | $allowed | index($k) | not)) | .[]' "$extends_file" 2>/dev/null)
+
+    if [[ -n "$invalid_keys" ]]; then
+        [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_error "Invalid keys in extends-plugin.json: $invalid_keys"
+        return 1
+    fi
+
+    # Validate that each dependency section contains objects, not arrays
+    for section in dependencies optionalDependencies systemDependencies optionalSystemDependencies; do
+        local section_type
+        section_type=$(jq -r ".$section | type" "$extends_file" 2>/dev/null)
+        if [[ "$section_type" != "null" ]] && [[ "$section_type" != "object" ]]; then
+            [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_error "Invalid $section in extends-plugin.json: expected object, got $section_type"
+            return 1
+        fi
+    done
+
+    # Validate version constraint format (basic check for semver-like patterns)
+    # Accepts: *, ^x.y.z, ~x.y.z, >=x.y.z, <=x.y.z, >x.y.z, <x.y.z, x.y.z, or object with version key
+    local version_pattern='^(\*|[\^~]?[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?|[<>=]+[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?)$'
+
+    for section in dependencies optionalDependencies systemDependencies optionalSystemDependencies; do
+        # Get all values from section
+        local values
+        values=$(jq -r ".$section // {} | to_entries[] | if .value | type == \"string\" then .value elif .value | type == \"object\" then .value.version // \"*\" else \"INVALID\" end" "$extends_file" 2>/dev/null)
+
+        while IFS= read -r version; do
+            [[ -z "$version" ]] && continue
+            if [[ "$version" == "INVALID" ]]; then
+                [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_error "Invalid dependency value in $section: must be string or object with version"
+                return 1
+            fi
+            if [[ ! "$version" =~ $version_pattern ]]; then
+                [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_error "Invalid version constraint in $section: $version"
+                return 1
+            fi
+        done <<< "$values"
+    done
+
+    [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_success "extends-plugin.json validated: $extends_file"
+    return 0
+}
+
 # Validate a plugin using claude CLI
 # Usage: validate_plugin path [quiet]
 # Returns: 0 if valid, 1 if invalid
@@ -22,12 +93,18 @@ validate_plugin() {
     local output
     if output=$(claude plugin validate "$path" 2>&1); then
         [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_success "Plugin validated: $path"
-        return 0
     else
         [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_error "Plugin validation failed: $path"
         [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && echo "$output" >&2
         return 1
     fi
+
+    # Also validate extends-plugin.json if it exists
+    if ! validate_extends_plugin "$path" "$quiet"; then
+        return 1
+    fi
+
+    return 0
 }
 
 # Validate a marketplace.json file using claude CLI

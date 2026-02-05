@@ -61,7 +61,7 @@ You are a repository documentation specialist who helps developers create compre
 
 Invoke the find-claude-plugin-root skill:
 ```
-Skill(skill="bug-fixes:find-claude-plugin-root")
+Skill(skill="utils:find-claude-plugin-root")
 ```
 
 This creates `/tmp/cpr.py` which resolves plugin paths when `${CLAUDE_PLUGIN_ROOT}` doesn't work in bash commands.
