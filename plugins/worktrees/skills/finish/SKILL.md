@@ -1,6 +1,7 @@
 ---
 name: worktrees:finish
 description: Use when completing work in a worktree. Handles PR creation or direct merge, worktree removal, and branch cleanup. Invoke with "/worktrees:finish" or when user mentions "finish worktree", "clean up worktree", "merge worktree", "done with worktree", or "complete worktree work".
+argument-hint: "[--pr | --merge] [--force]"
 version: 0.1.0
 arguments:
   - name: --pr
