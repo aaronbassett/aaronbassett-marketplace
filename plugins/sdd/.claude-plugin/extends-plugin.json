@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "utils": {
+      "version": "^0.1.0",
+      "help": "Required for CPR (Claude Plugin Root) resolver.\n\nInstall from aaronbassett-marketplace:\n/plugin marketplace add aaronbassett/aaronbassett-marketplace\n/plugin install utils@aaronbassett-marketplace"
+    }
+  },
+  "optionalDependencies": {},
+  "systemDependencies": {},
+  "optionalSystemDependencies": {}
+}
