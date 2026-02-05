@@ -65,6 +65,10 @@
       "source": "./plugins/spec-writer"
     },
     {
+      "name": "utils",
+      "source": "./plugins/utils"
+    },
+    {
       "name": "worktrees",
       "source": "./plugins/worktrees"
     }
