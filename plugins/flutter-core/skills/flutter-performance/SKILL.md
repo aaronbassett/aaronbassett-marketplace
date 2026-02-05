@@ -1,5 +1,5 @@
 ---
-skill_id: flutter-performance
+name: flutter-core:flutter-performance
 description: |
   Comprehensive Flutter performance optimization covering build optimization, rendering performance,
   memory management, profiling tools, isolates/concurrency, and app size reduction. Use when optimizing

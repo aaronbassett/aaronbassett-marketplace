@@ -1,5 +1,5 @@
 ---
-name: dependency-scanner
+name: utils:dependency-scanner
 description: This skill should be used when the user asks to "scan for dependencies", "find plugin dependencies", "generate extends-plugin.json", "discover plugin requirements", or invokes /utils:dependency-scanner. Scans plugin files for patterns indicating dependencies on other plugins or system tools.
 version: 0.1.0
 ---

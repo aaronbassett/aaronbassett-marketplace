@@ -1,5 +1,5 @@
 ---
-name: fly-deploy
+name: dev-specialisms:fly-deploy
 description: Quick MVP deployment to fly.io for JavaScript (Next.js, RedwoodSDK, Express), Rust (Axum, Rocket), Python (FastAPI), and generic Dockerfiles. Use when deploying applications to fly.io, setting up databases (Postgres, volumes, Tigris object storage), managing secrets, configuring custom domains, setting up GitHub Actions workflows, creating review apps for pull requests, or troubleshooting fly.io deployments. Covers complete deployment workflows from initial setup through production.
 ---
 

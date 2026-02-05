@@ -1,5 +1,5 @@
 ---
-skill_name: flutter-forms-input
+name: flutter-core:flutter-forms-input
 version: 1.0.0
 description: Comprehensive guide to Flutter forms, validation, gestures, and input handling
 applies_to:

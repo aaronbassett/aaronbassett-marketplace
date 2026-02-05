@@ -73,7 +73,7 @@ validate_extends_plugin() {
         done <<< "$values"
     done
 
-    [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_success "extends-plugin.json validated: $extends_file"
+    [[ "$quiet" != "true" ]] && [[ "$JSON_MODE" != "true" ]] && print_success_dim "Plugin extension: $extends_file"
     return 0
 }
 

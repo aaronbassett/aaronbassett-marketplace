@@ -1,5 +1,5 @@
 ---
-name: flutter-platform-integration
+name: flutter-core:flutter-platform-integration
 description: Comprehensive guidance on Flutter platform integration including platform channels, native code integration, plugin development, and platform views. Use when working with platform-specific features, creating plugins, or integrating native Android/iOS code with Flutter applications.
 version: 1.0.0
 ---

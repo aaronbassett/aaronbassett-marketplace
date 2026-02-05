@@ -1,5 +1,5 @@
 ---
-name: docker-sandbox-setup
+name: sandbox:docker-sandbox-setup
 description: This skill should be used when creating Docker containers for Claude Code sandboxing, configuring isolated development environments, setting up Docker volumes and persistence, configuring port forwarding for sandboxed applications, or troubleshooting Docker container issues in sandbox contexts. Provides Docker configuration knowledge specifically for running Claude Code in contained environments.
 version: 0.1.0
 ---

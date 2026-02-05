@@ -1,5 +1,5 @@
 ---
-name: rust-core
+name: devs:rust-core
 description: "Comprehensive Rust development expertise covering core principles, patterns, error handling, async programming, testing, and performance optimization. Use when working on Rust projects requiring guidance on: (1) Language fundamentals (ownership, lifetimes, borrowing), (2) Architectural decisions and design patterns, (3) Web development (Axum, Actix-web, Rocket), (4) AI/LLM integration, (5) CLI/TUI applications, (6) Desktop development with Tauri, (7) Async/await and concurrency, (8) Error handling strategies, (9) Testing and benchmarking, (10) Performance optimization, (11) Logging and observability, or (12) Code reviews and best practices."
 ---
 

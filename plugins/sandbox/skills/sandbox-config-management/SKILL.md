@@ -1,5 +1,5 @@
 ---
-name: sandbox-config-management
+name: sandbox:sandbox-config-management
 description: This skill should be used when reading or writing Sandbox.toml configuration files, cloning sandbox configurations from existing projects, merging user preferences with detected settings, validating sandbox configuration compatibility, or managing sandbox metadata and settings. Provides knowledge for Sandbox.toml structure and configuration management.
 version: 0.1.0
 ---

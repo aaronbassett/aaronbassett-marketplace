@@ -1,5 +1,5 @@
 ---
-name: sdd:code-mapper
+name: code-mapper
 description: Codebase mapper agent that analyzes specific focus areas and generates documentation. Receives a focus area from the orchestrator, uses the sdd:code-mapping skill, writes documents directly to .sdd/codebase/, and returns only confirmation.
 tools:
   - Glob

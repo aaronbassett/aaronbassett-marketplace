@@ -113,7 +113,7 @@ Options:
 
 Load the license-selection skill:
 ```
-Skill(skill="license-selection")
+Skill(skill="readme-and-co:license-selection")
 ```
 
 **For code projects**, follow this decision tree:
@@ -446,17 +446,17 @@ Load skills at appropriate times:
 
 **documentation-standards** - When creating README, CONTRIBUTING, SUPPORT:
 ```
-Skill(skill="documentation-standards")
+Skill(skill="readme-and-co:documentation-standards")
 ```
 
 **license-selection** - When discussing licenses:
 ```
-Skill(skill="license-selection")
+Skill(skill="readme-and-co:license-selection")
 ```
 
 **github-templates** - When creating issue/PR templates, CODEOWNERS:
 ```
-Skill(skill="github-templates")
+Skill(skill="readme-and-co:github-templates")
 ```
 
 Reference their guidance when making recommendations.

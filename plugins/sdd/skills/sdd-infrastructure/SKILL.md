@@ -1,5 +1,5 @@
 ---
-name: sdd-infrastructure
+name: sdd:sdd-infrastructure
 description: Core infrastructure for Specification-Driven Development workflow. Contains templates for specs/plans/tasks, bash scripts for feature management, and constitution framework for project governance. This skill powers the /sdd commands with reusable, versioned templates and automation.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: spec-writer
+name: spec-writer:specs-workflow
 description: This skill should be used when the user asks to "create a spec", "write a specification", "create a feature specification", "build a requirements document", "gather requirements", "develop user stories", "start discovery process", or mentions needing help with requirements analysis or product specification. Guides users through a structured discovery process where stories emerge from problem understanding rather than being predefined.
 version: 0.1.0
 ---

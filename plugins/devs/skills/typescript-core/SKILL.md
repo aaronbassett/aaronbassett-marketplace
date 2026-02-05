@@ -1,5 +1,5 @@
 ---
-name: typescript-core
+name: devs:typescript-core
 description: Comprehensive TypeScript development guidance covering configuration, type safety, architectural patterns, and best practices. Use when working with TypeScript codebases for (1) TypeScript configuration and setup (tsconfig.json, strict mode), (2) Type definitions and patterns (utility types, type-safe approaches), (3) Resolving TypeScript compilation errors, (4) Applying TypeScript best practices (project structure, error handling, package selection). Automatically triggered when working in .ts/.tsx files or addressing TypeScript-specific queries.
 ---
 

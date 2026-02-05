@@ -211,11 +211,11 @@ Execution steps:
           - Risk reduction (security, performance, maintainability)
           - Alignment with any explicit project goals or constraints visible in the spec
        - **If STACK.md exists, reference appropriate skill for tech-specific guidance**:
-          - TypeScript projects: Reference typescript-core for architecture decisions
-          - Python/FastAPI projects: Reference python-core
-          - React/Next.js projects: Reference react-core or react-components
-          - Rust projects: Reference rust-core for design patterns
-          - Example: "According to react-core, Option B (App Router) is recommended for new Next.js projects due to better performance and modern patterns"
+          - TypeScript projects: Reference devs:typescript-core for architecture decisions
+          - Python/FastAPI projects: Reference devs:python-core
+          - React/Next.js projects: Reference devs:react-core or devs:react-components
+          - Rust projects: Reference devs:rust-core for design patterns
+          - Example: "According to devs:react-core, Option B (App Router) is recommended for new Next.js projects due to better performance and modern patterns"
        - Present your **recommended option prominently** at the top with clear reasoning (1-2 sentences explaining why this is the best choice).
        - Format as: `**Recommended:** Option [X] - <reasoning> [skill reference if applicable]`
        - Then render all options as a Markdown table:

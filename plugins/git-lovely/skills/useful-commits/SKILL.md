@@ -1,5 +1,5 @@
 ---
-name: Useful Commits
+name: git-lovely:useful-commits
 description: This skill should be used when the user asks to "review this commit message", "validate my commit", "improve this commit message", "explain conventional commits", "teach me commit message best practices", "write a commit", or requests guidance on git commit formatting. Provides strict Conventional Commits formatting with Angular convention to produce concise, informative commit messages following industry best practices.
 version: 0.1.0
 ---

@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: "Use this agent when you need a thorough code review after writing or modifying code. Examples:\\n\\n<example>\\nContext: The user has just implemented a new feature with multiple files changed.\\nuser: \"I've finished implementing the user authentication feature. Here are the changes:\"\\n<code changes shown>\\nassistant: \"Let me use the Task tool to launch the senior-code-reviewer agent to provide a comprehensive review of these changes.\"\\n<commentary>\\nSince significant code was written, use the senior-code-reviewer agent to perform a thorough code review.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user has refactored a complex module.\\nuser: \"I've refactored the payment processing module to improve performance.\"\\nassistant: \"I'll use the Task tool to launch the senior-code-reviewer agent to review the refactoring for correctness, performance improvements, and potential issues.\"\\n<commentary>\\nRefactoring requires careful review to ensure functionality is preserved and improvements are realized.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user has fixed a bug.\\nuser: \"Fixed the race condition in the event handler\"\\nassistant: \"Let me use the Task tool to launch the senior-code-reviewer agent to verify the fix addresses the root cause and doesn't introduce new issues.\"\\n<commentary>\\nBug fixes should be reviewed to ensure they properly address the issue without side effects.\\n</commentary>\\n</example>"
-skills: code-review, python-core, rust-core, typescript-core, security-core
+skills: devs:code-review, devs:python-core, devs:rust-core, devs:typescript-core, devs:security-core
 model: opus
 color: purple
 ---

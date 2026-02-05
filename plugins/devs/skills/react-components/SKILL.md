@@ -1,5 +1,5 @@
 ---
-name: react-component
+name: devs:react-components
 description: |
   Create and review React components following strict TypeScript patterns, container/presenter architecture, and composition-first design. Use when asked to: (1) Create a React component, (2) Review a React component, (3) Build UI features, (4) Implement forms, (5) Add data fetching with TanStack Query. Enforces KISS/YAGNI principles, headless component patterns, Tailwind v4 styling, and Web3 security best practices.
 ---

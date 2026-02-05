@@ -1,5 +1,5 @@
 ---
-name: find-claude-plugin-root
+name: utils:find-claude-plugin-root
 description: This skill should be used when the user needs to locate a plugin's installation path, when ${CLAUDE_PLUGIN_ROOT} doesn't expand in markdown files, or when invoked via /utils:find-claude-plugin-root. Generates a CPR resolver script at /tmp/cpr.py.
 version: 0.1.0
 ---

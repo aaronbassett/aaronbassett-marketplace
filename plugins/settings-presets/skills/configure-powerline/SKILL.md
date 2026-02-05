@@ -1,5 +1,5 @@
 ---
-name: Configure Powerline Status Line
+name: settings-presets:configure-powerline
 description: This skill should be used when the user asks to "configure powerline", "set up status line", "use my default status line", "configure powerline as usual", "change the powerline theme", "update status line settings", or mentions powerline configuration. Provides comprehensive guidance for creating and managing .claude/.claude-powerline.json configuration and integrating it with Claude Code settings.
 version: 0.1.0
 ---

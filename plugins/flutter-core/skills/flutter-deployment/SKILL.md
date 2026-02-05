@@ -1,5 +1,5 @@
 ---
-name: flutter-deployment
+name: flutter-core:flutter-deployment
 description: Comprehensive guide for deploying Flutter applications to all platforms including Android, iOS, web, and desktop. Covers build configuration, code signing, app store submission, CI/CD automation, and production best practices. Use when preparing for release or setting up deployment pipelines.
 version: 1.0.0
 ---

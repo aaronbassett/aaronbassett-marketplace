@@ -354,7 +354,7 @@ When generating task descriptions, detect the technology from `.sdd/codebase/STA
 - `.jsx` files → Reference `devs:react-dev` agent
 - Next.js context (app/, pages/, next.config in file paths) → Also reference `devs:react-dev` agent
 - Tauri context (src-tauri/ in file paths) → Also reference `devs:rust-dev` agent
-- Generic config/setup tasks → Reference init-local-tooling skill rather than an agent
+- Generic config/setup tasks → Reference dev-specialisms:init-local-tooling skill rather than an agent
 
 **Task Description Format with Agent Reference**:
 ```text
@@ -385,7 +385,7 @@ Rust task:
 
 Config task (no specific agent):
 ```text
-- [ ] T003 Configure ESLint and Prettier per STACK.md (use init-local-tooling skill)
+- [ ] T003 Configure ESLint and Prettier per STACK.md (use dev-specialisms:init-local-tooling skill)
 ```
 
 **Benefits**:

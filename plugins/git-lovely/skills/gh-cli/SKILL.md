@@ -1,5 +1,5 @@
 ---
-name: gh-cli
+name: git-lovely:gh-cli
 description: This skill should be used when the user asks to "use GitHub CLI", "use gh command", work with "pull requests", "create a PR", "merge pull request", "approve PR", "review PR comments", "check PR status", work with "issues", "triage issues", "list issues", "label issues", work with "GitHub Actions", "check CI status", "fix failing CI", "view workflow runs", "download workflow logs", "rerun workflow", or mentions "gh tool", "gh command", or GitHub automation tasks. Provides comprehensive guidance for autonomously creating and executing GitHub workflows using the official GitHub CLI.
 version: 0.1.0
 ---

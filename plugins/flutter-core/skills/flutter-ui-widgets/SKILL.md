@@ -1,5 +1,5 @@
 ---
-name: flutter-ui-widgets
+name: flutter-core:flutter-ui-widgets
 description: Comprehensive guidance for building Flutter user interfaces with widgets, including Material Design 3 components, Cupertino iOS-style widgets, layout composition patterns, widget lifecycle management, and creating reusable custom UI components. Use when working with Flutter UI, composing widgets, building layouts, implementing Material Design, creating iOS-style interfaces, or developing custom reusable widgets.
 version: 1.0.0
 ---
