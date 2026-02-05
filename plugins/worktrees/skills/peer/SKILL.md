@@ -1,6 +1,7 @@
 ---
 name: worktrees:peer
 description: Use for independent development with PR-based integration. Multiple Claude instances work autonomously, each creating PRs to main. Invoke with "/worktrees:peer <feature>" or when user mentions "peer workflow", "independent worktree", "autonomous development", "PR-based workflow", or "multi-instance development".
+argument-hint: "<feature> [--id <identifier>]"
 version: 0.1.0
 arguments:
   - name: feature
