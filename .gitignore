@@ -30,3 +30,8 @@ reviews/
 
 # Git worktrees
 .worktrees/
+
+# Generated planning/spec/task files
+docs/
+discovery/
+.sdd/
